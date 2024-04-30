@@ -5,11 +5,10 @@ return {
       require("template-string").setup()
     end,
   },
-      {
-   'mcauley-penney/visual-whitespace.nvim',
-    config = true
+  {
+    "mcauley-penney/visual-whitespace.nvim",
+    config = true,
   },
-
 
   {
     "chrishrb/gx.nvim",
@@ -26,11 +25,11 @@ return {
       require("gx").setup({
         open_browser_app = "open", -- specify your browser app; default for macOS is "open", Linux "xdg-open" and Windows "powershell.exe"
         handlers = {
-          plugin = true,           -- open plugin links in lua (e.g. packer, lazy, ..)
-          github = true,           -- open github issues
-          brewfile = true,         -- open Homebrew formulaes and casks
-          package_json = true,     -- open dependencies from package.json
-          search = true,           -- search the web/selection on the web if nothing else is found
+          plugin = true, -- open plugin links in lua (e.g. packer, lazy, ..)
+          github = true, -- open github issues
+          brewfile = true, -- open Homebrew formulaes and casks
+          package_json = true, -- open dependencies from package.json
+          search = true, -- search the web/selection on the web if nothing else is found
         },
         handler_options = {
           search_engine = "google", -- you can select between google, bing, duckduckgo, and ecosia
@@ -81,6 +80,7 @@ return {
   {
     "mg979/vim-visual-multi",
     lazy = false,
+    enabled = false,
     init = function()
       vim.g.VM_maps = {
         ["Select Cursor Down"] = "<M-C-Down>",
@@ -97,6 +97,7 @@ return {
 
   {
     "NvChad/nvim-colorizer.lua",
+    enabled = false,
     config = function()
       require("colorizer").setup()
     end,
@@ -119,6 +120,7 @@ return {
   },
   {
     "majutsushi/tagbar",
+    enabled = false,
     init = function()
       vim.g.tagbar_show_ballon = 0
     end,
@@ -137,6 +139,7 @@ return {
   },
   {
     "moozd/aidoc.nvim",
+    enabled = false,
     config = function()
       require("aidoc").setup({
         email = "mohammad.mdz72@gmail.com",
@@ -182,8 +185,8 @@ return {
       },
       icons = {
         breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
-        separator = " ",  -- symbol used between a key and it's label
-        group = "",       -- symbol prepended to a group
+        separator = " ", -- symbol used between a key and it's label
+        group = "", -- symbol prepended to a group
       },
     },
 

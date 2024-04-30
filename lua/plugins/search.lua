@@ -25,6 +25,7 @@ return {
 
   {
     "LukasPietzschmann/telescope-tabs",
+    enabled = false,
     config = function()
       require("telescope").load_extension("telescope-tabs")
       require("telescope-tabs").setup({
@@ -36,6 +37,7 @@ return {
   { "nvim-pack/nvim-spectre", dependencies = { "nvim-lua/plenary.nvim" } },
   {
     "junegunn/fzf.vim",
+     enabled=false,
     dependencies = { "junegunn/fzf", build = "./install --bin" },
   },
 }

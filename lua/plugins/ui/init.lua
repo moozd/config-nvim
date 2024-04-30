@@ -3,6 +3,7 @@ local Util = require("moozd.util")
 return {
   {
     "xiyaowong/transparent.nvim",
+    enabled = false,
     config = function(opts)
       require("transparent").setup({
         extra_groups = {
@@ -13,8 +14,8 @@ return {
     end,
   },
   {
-    enabled = true,
     "goolord/alpha-nvim",
+    enabled = false,
     event = "VimEnter",
     opts = require("plugins.ui.dashboard").opts,
     config = require("plugins.ui.dashboard").config,
@@ -30,6 +31,7 @@ return {
   -- },
   {
     "nanozuki/tabby.nvim",
+    enabled = false,
     event = "VimEnter",
     dependencies = "nvim-tree/nvim-web-devicons",
     config = require("plugins.ui.tabby"),
@@ -57,18 +59,19 @@ return {
   },
   {
     "nvim-lualine/lualine.nvim",
+    enabled = false,
     dependencies = { "nvim-tree/nvim-web-devicons", "WhoIsSethDaniel/lualine-lsp-progress.nvim" },
     config = require("plugins.ui.lualine"),
   },
   {
     "folke/noice.nvim",
-    enabled = true,
+    enabled = false,
     event = "VeryLazy",
     dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
     config = function()
       require("noice").setup({
         cmdline = {
-          enabled = true,
+          enabled = false,
           view = "cmdline",
         },
         lsp = {
@@ -158,6 +161,7 @@ return {
   {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
+    enabled = false,
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended

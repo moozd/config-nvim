@@ -1,6 +1,6 @@
 
 
-vim.cmd.colorscheme("catppuccin-mocha")
+-- vim.cmd.colorscheme("catppuccin-mocha")
 
 vim.cmd("highlight DiagnosticUnderlineInfo cterm=undercurl gui=undercurl")
 vim.cmd("highlight DiagnosticUnderlineError cterm=undercurl gui=undercurl")
