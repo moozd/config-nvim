@@ -1,7 +1,7 @@
 --trying to make it run smooth :-)
 --
--- local augroup = require("moozd.util").augroup
--- local autocmd = vim.api.nvim_create_autocmd
+local augroup = require("moozd.util").augroup
+local autocmd = vim.api.nvim_create_autocmd
 --
 -- autocmd("VimEnter", {
 --   desc = "Start up",
@@ -70,13 +70,13 @@
 --   command = "checktime",
 -- })
 --
--- -- Highlight on yank
--- autocmd("TextYankPost", {
---   group = augroup("highlight_yank"),
---   callback = function()
---     vim.highlight.on_yank()
---   end,
--- })
+-- Highlight on yank
+autocmd("TextYankPost", {
+  group = augroup("highlight_yank"),
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+})
 --
 -- -- resize splits if window got resized
 -- autocmd({ "VimResized" }, {
@@ -103,11 +103,11 @@
 --   end,
 -- })
 --
--- autocmd("TermOpen", {
---   pattern = "*",
---   group = augroup("disable_term_line_no"),
---   command = "setlocal nonumber norelativenumber",
--- })
+autocmd("TermOpen", {
+  pattern = "*",
+  group = augroup("disable_term_line_no"),
+  command = "setlocal nonumber norelativenumber",
+})
 
 --TODO: WIP
 -- autocmdg"FileType", {

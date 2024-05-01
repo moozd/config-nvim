@@ -22,22 +22,4 @@ return {
       telescope.load_extension("tmux")
     end,
   },
-
-  {
-    "LukasPietzschmann/telescope-tabs",
-    enabled = false,
-    config = function()
-      require("telescope").load_extension("telescope-tabs")
-      require("telescope-tabs").setup({
-        -- Your custom config :^)
-      })
-    end,
-    dependencies = { "nvim-telescope/telescope.nvim" },
-  },
-  { "nvim-pack/nvim-spectre", dependencies = { "nvim-lua/plenary.nvim" } },
-  {
-    "junegunn/fzf.vim",
-     enabled=false,
-    dependencies = { "junegunn/fzf", build = "./install --bin" },
-  },
 }

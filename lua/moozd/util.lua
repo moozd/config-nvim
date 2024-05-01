@@ -73,25 +73,25 @@ M.icons = {
 }
 
 function M.create_terminal_app(opts)
-  -- local Terminal = require("toggleterm.terminal").Terminal
-  -- local dir = nil
-  -- local function build()
-  --   dir = opts["dir"] or vim.loop.cwd()
-  --   return Terminal:new(vim.tbl_deep_extend("force", {
-  --     direction = "float",
-  --     dir = dir,
-  --     close_on_exit = true,
-  --     hidden = true,
-  --     float_opts = {
-  --       border = "curved",
-  --     },
-  --   }, opts or {}))
-  --   --
-  -- end
-  -- local t = build()
+  local Terminal = require("toggleterm.terminal").Terminal
+  local dir = nil
+  local function build()
+    dir = opts["dir"] or vim.loop.cwd()
+    return Terminal:new(vim.tbl_deep_extend("force", {
+      direction = "float",
+      dir = dir,
+      close_on_exit = true,
+      hidden = true,
+      float_opts = {
+        border = "curved",
+      },
+    }, opts or {}))
+    --
+  end
+  local t = build()
 
   return function()
-    -- t:toggle()
+    t:toggle()
   end
 end
 

@@ -111,11 +111,9 @@ map.n["<leader>gh"] = { "<cmd>Gitsigns preview_hunk_inline<cr>", desc = "Preview
 
 --- Apps -------------------------------
 map.n["<leader>."] = { desc = "Apps" }
-map.n["<leader>.g"] = { Apps.lazygit, desc = Util.get_icon("Git", 1) .. "Git" }
-map.n["<leader>.e"] = { Apps.ranger, desc = Util.get_icon("FolderOpen", 1) .. "Explorer" }
-map.n["<leader>.d"] = { Apps.lazydocker, desc = Util.get_icon("Docker", 1) .. "Docker" }
-map.n["<leader>.s"] = { Apps.btm, desc = Util.get_icon("Stats", 1) .. "Stats" }
-map.n["<leader>.r"] = { Apps.glow, desc = "  " .. "Readme" }
+map.n["<leader>.g"] = { Apps.lazygit, desc = "Git" }
+map.n["<leader>.d"] = { Apps.lazydocker, desc = "Docker" }
+map.n["<leader>.r"] = { Apps.glow, desc = "Readme" }
 map.n["<leader>.b"] = { "<cmd>ToggleTerm<cr>", desc = "  Bottom Terminal" }
 --
 --Harpoon------------------
@@ -142,5 +140,7 @@ map.n["<leader>c"] = { vim.lsp.buf.code_action, desc = "Code actions" }
 map.n["<leader>f"] = { vim.lsp.buf.format, desc = "Format" }
 map.n["<leader>r"] = { vim.lsp.buf.rename, desc = "Rename" }
 map.n["<leader>d"] = { "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Problems" }
+map.n["<leader>,"] = { "<cmd>Neotree float<cr>", desc = "Explore" }
+
 
 Util.setup_keymap(map)

@@ -1,3 +1,4 @@
+-- hey whoy
 return function()
   local recording_register = vim.fn.reg_recording()
   if recording_register == "" then
@@ -6,3 +7,6 @@ return function()
     return "󰑋 "  ..recording_register
   end
 end
+
+
+

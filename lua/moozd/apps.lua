@@ -1,5 +1,5 @@
 local app = require("moozd.util").create_terminal_app
-
+-- gearo are one
 return {
   terminal = app({}),
   ranger = app({cmd="ranger"}),

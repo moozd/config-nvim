@@ -1,7 +1,7 @@
 -- local cspell_path = vim.env.HOME .. "/.config/nvim/.cspell.json"
 
 local function setup_lsp()
-    -- local null_ls = require("null-ls")
+    local null_ls = require("null-ls")
     require("mason").setup({})
 
     require("mason-lspconfig").setup({})
@@ -34,22 +34,22 @@ local function setup_lsp()
 
     -- local cspell = require("cspell")
 
-    -- null_ls.setup({
-    --   sources = {
-    --     cspell.diagnostics.with({
-    --       diagnostics_postprocess = function(diagnostic)
-    --         diagnostic.severity = vim.diagnostic.severity["HINT"]
-    --       end,
-    --       diagnostic_config = {
-    --         virtual_text = false,
-    --       },
-    --       config = cspell_config,
-    --     }),
-    --     cspell.code_actions.with({
-    --       config = cspell_config,
-    --     }),
-    --   },
-    -- })
+    null_ls.setup({
+      -- sources = {
+      --   cspell.diagnostics.with({
+      --     diagnostics_postprocess = function(diagnostic)
+      --       diagnostic.severity = vim.diagnostic.severity["HINT"]
+      --     end,
+      --     diagnostic_config = {
+      --       virtual_text = false,
+      --     },
+      --     config = cspell_config,
+      --   }),
+      --   cspell.code_actions.with({
+      --     config = cspell_config,
+      --   }),
+      -- },
+    })
     require("mason-null-ls").setup({
         handlers = {
             function(source_name, methods)
