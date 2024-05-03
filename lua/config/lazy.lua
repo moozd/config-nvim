@@ -10,14 +10,7 @@ vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 require("lazy").setup({
   spec = {
     { "rktjmp/lush.nvim", lazy = false },
-    { "cocopon/iceberg.vim", lazy = false },
-    { "Yazeed1s/minimal.nvim", lazy = false,init=function ()
-        vim.g.minimal_italic_functions = false
-        vim.g.minimal_italic_keywords = false
-        vim.g.minimal_italic_booleans = false
-        vim.g.minimal_italic_variables = false
-        vim.g.minimal_italic_comments = false
-    end },
+    { "mcchrish/zenbones.nvim", lazy = false },
     { import = "plugins" },
   },
 
