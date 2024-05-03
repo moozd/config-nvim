@@ -18,8 +18,5 @@ return    {{
                 },
             })
 
-            vim.cmd("colorscheme rose-pine")
-
-            ColorMyPencils()
         end
 }}

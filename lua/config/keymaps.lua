@@ -5,10 +5,6 @@ local harpoon = require("harpoon")
 
 local map = Util.empty_map_table()
 
-if vim.g.neovide then
-    require("config.utils.neovide").setupKeybindings()
-end
-
 --- navigation ---------------------
 map.n["gb"] = {
     "<cmd>Telescope buffers theme=dropdown previewer=false<cr>",
@@ -114,7 +110,7 @@ map.n["<leader>."] = { desc = "Apps" }
 map.n["<leader>.g"] = { Apps.lazygit, desc = "Git" }
 map.n["<leader>.d"] = { Apps.lazydocker, desc = "Docker" }
 map.n["<leader>.r"] = { Apps.glow, desc = "Readme" }
-map.n["<leader>.b"] = { "<cmd>ToggleTerm<cr>", desc = "  Bottom Terminal" }
+map.n["<leader>.b"] = { "<cmd>ToggleTerm<cr>", desc = "Terminal" }
 --
 --Harpoon------------------
 
@@ -140,6 +136,7 @@ map.n["<leader>c"] = { vim.lsp.buf.code_action, desc = "Code actions" }
 map.n["<leader>f"] = { vim.lsp.buf.format, desc = "Format" }
 map.n["<leader>r"] = { vim.lsp.buf.rename, desc = "Rename" }
 map.n["<leader>d"] = { "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Problems" }
+map.n["<leader>u"]={"<cmd>UndotreeToggle<cr>",desc="History"}
 map.n["<leader>,"] = { "<cmd>Neotree float<cr>", desc = "Explore" }
 
 

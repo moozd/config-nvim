@@ -1,4 +1,5 @@
 local app = require("moozd.util").create_terminal_app
+
 -- gearo are one
 return {
   terminal = app({}),
@@ -9,3 +10,4 @@ return {
   spotify = app({ cmd = "spt" }),
   glow = app({cmd="glow"})
 }
+

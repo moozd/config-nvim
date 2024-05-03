@@ -7,15 +7,15 @@ return {
         config = function()
             require("gitsigns").setup({
                 signs = {
-                    add = { text = icons.GitAdd },
-                    change = { text = icons.GitChange },
-                    delete = { text = icons.GitDelete },
-                    topdelete = { text = icons.GitDelete },
-                    changedelete = { text = icons.GitChange },
-                    untracked = { text = icons.GitUntracked },
+                    add = { text = '+' },
+                    change = { text = '+' },
+                    delete = { text = '-' },
+                    topdelete = { text = '-' },
+                    changedelete = { text = '-' },
+                    untracked = { text = '+' },
                 },
 
-                current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
+                current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
                 current_line_blame_formatter = icons.Git .. " <author>, <author_time:%R> - <summary>",
                 current_line_blame_opts = {
                     virt_text = true,
