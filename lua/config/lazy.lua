@@ -11,6 +11,7 @@ require("lazy").setup({
   spec = {
     { "rktjmp/lush.nvim", lazy = false },
     { "mcchrish/zenbones.nvim", lazy = false },
+    {"catppuccin/nvim",lazy=false},
     { import = "plugins" },
   },
 
