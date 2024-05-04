@@ -10,7 +10,7 @@ local function setup_lsp()
     function(server_name)
       if server_name == "volar" then
         require("lspconfig").volar.setup({
-          filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
+          filetypes = {  "vue" },
           init_options = {
             vue = {
               hybridMode = false,
