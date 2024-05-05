@@ -16,14 +16,9 @@ return {
     end,
 
     opts = {
-      input = { default_prompt = "➤ " },
+      input = { default_prompt = "-> " },
       select = {
         backend = { "telescope", "builtin" },
-        select = {
-          telescope = {
-            borderchars = { " ", " ", " ", " ", " ", " ", " ", " " },
-          },
-        },
       },
     },
   },

@@ -15,6 +15,7 @@ vim.opt.wildmenu = true
 vim.opt.wildoptions = "fuzzy,tagfile"
 vim.opt.path:append("**")
 vim.opt.wildignore:append("./git/*")
+vim.opt.wildignore:append("./node_modules/*")
 vim.opt.smartindent = true
 
 vim.opt.wrap = false

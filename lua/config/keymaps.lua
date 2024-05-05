@@ -120,14 +120,8 @@ map.n["g4"] = { function() harpoon:list():select(4) end }
 
 
 
---- find --------------------------
-map.n["<leader>s"] = { desc = "Search" }
-map.n["<leader>ss"] = { "<cmd>Telescope find_files theme=dropdown previewer=false<cr>", desc = "Find (Telescope)" }
-map.n["<leader>so"] = { "<cmd>Telescope oldfiles <cr>", desc = "Recent files (Telescope)" }
-map.n["<leader>sw"] = { "<cmd>Telescope live_grep <cr>", desc = "Find words" }
-map.n["<leader>st"] = { "<cmd>TodoTelescope<cr>", desc = "TODOS" }
 
---- code --------------------------
+--- core  --------------------------
 
 map.n["<leader>a"] = { function() harpoon:list():add() end, desc = "Remember" }
 map.n["<leader>c"] = { vim.lsp.buf.code_action, desc = "Code actions" }
@@ -135,6 +129,7 @@ map.n["<leader>f"] = { vim.lsp.buf.format, desc = "Format" }
 map.n["<leader>r"] = { vim.lsp.buf.rename, desc = "Rename" }
 map.n["<leader>d"] = { "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Problems" }
 map.n["<leader>u"]={"<cmd>UndotreeToggle<cr>",desc="History"}
+map.n["<leader>s"] = { "<cmd>Telescope live_grep <cr>", desc = "Find words" }
 map.n["<leader>,"] = { "<cmd>Explore<cr>", desc = "Explore" }
 
 
