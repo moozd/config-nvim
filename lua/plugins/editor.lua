@@ -62,7 +62,6 @@ return {
     {
         "mg979/vim-visual-multi",
         lazy = false,
-        enabled = false,
         init = function()
             vim.g.VM_maps = {
                 ["Select Cursor Down"] = "<M-C-Down>",
