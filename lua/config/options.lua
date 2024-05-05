@@ -17,7 +17,6 @@ vim.opt.path:append("**")
 vim.opt.wildignore:append("./git/*")
 vim.opt.wildignore:append("./node_modules/*")
 vim.opt.smartindent = true
-
 vim.opt.wrap = false
 
 vim.opt.swapfile = false

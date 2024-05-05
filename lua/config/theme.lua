@@ -1,7 +1,8 @@
 vim.g.zenbones_italc_comments = false
 vim.g.zenbones_darkness = 'stark'
 vim.cmd.colorscheme("rose-pine")
-vim.cmd([[set background=dark]])
+
+-- remove background
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 -- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })

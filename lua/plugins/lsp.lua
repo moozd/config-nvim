@@ -1,16 +1,14 @@
 -- local cspell_path = vim.env.HOME .. "/.config/nvim/.cspell.json"
 
 local function setup_lsp()
-  -- require("neoconf").setup({})
-  local null_ls = require("null-ls")
+  require("neoconf").setup({})
   require("mason").setup({})
-
   require("mason-lspconfig").setup({})
   require("mason-lspconfig").setup_handlers({
     function(server_name)
       if server_name == "volar" then
         require("lspconfig").volar.setup({
-          filetypes = {  "vue" },
+          filetypes = { "vue" },
           init_options = {
             vue = {
               hybridMode = false,
@@ -26,7 +24,7 @@ local function setup_lsp()
     end,
   })
 
-  null_ls.setup({})
+  require("null-ls").setup({})
   require("mason-null-ls").setup({
     handlers = {
       function(source_name, methods)
@@ -34,28 +32,25 @@ local function setup_lsp()
       end,
     },
   })
+
+  require("rust-tools").setup({})
 end
 
 return {
   {
     "williamboman/mason.nvim",
     dependencies = {
-      -- { "folke/neodev.nvim", opts = {} },
+      "folke/neodev.nvim",
       "neovim/nvim-lspconfig",
       "williamboman/mason-lspconfig.nvim",
       "nvimtools/none-ls.nvim",
       "jay-babu/mason-null-ls.nvim",
       "folke/neoconf.nvim",
+      "folke/neodev.nvim",
+      "simrat39/rust-tools.nvim",
     },
     config = setup_lsp,
   },
-  {
-    "simrat39/rust-tools.nvim",
-    config = function()
-      require("rust-tools").setup({})
-    end,
-  },
-  { "folke/neodev.nvim", opts = {} },
   {
     "L3MON4D3/LuaSnip",
     build = (not jit.os:find("Windows"))
@@ -87,7 +82,6 @@ return {
     opts = function()
       vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
       local cmp = require("cmp")
-      local compare = require("cmp.config.compare")
       return {
         completion = {
           completeopt = "menu,menuone",
@@ -125,24 +119,11 @@ return {
             preset = "codicons",
           }),
         },
-        -- sorting = {
-        --     priority_weight = 1.0,
-        --     comparators = {
-        --         compare.locality,
-        --         compare.exact,
-        --         compare.score, -- based on :  score = score + ((#sources - (source_index - 1)) * sorting.priority_weight)
-        --         compare.kind,
-        --         compare.order,
-        --         compare.recently_used,
-        --         compare.offset,
-        --     },
-        -- },
       }
     end,
   },
   {
     "Dynge/gitmoji.nvim",
-    enabled = false,
     dependencies = {
       "hrsh7th/nvim-cmp",
     },
@@ -165,10 +146,4 @@ return {
       -- refer to the configuration section below
     },
   },
-  -- {
-  --   "notjedi/nvim-rooter.lua",
-  --   config = function()
-  --     require("nvim-rooter").setup()
-  --   end,
-  -- },
 }
