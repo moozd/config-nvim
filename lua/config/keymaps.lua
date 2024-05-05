@@ -55,7 +55,6 @@ map.n["gh"] = { function() vim.diagnostic.config({ virtual_text = true }) end, }
 -- stylua: ignore
 map.n["ghh"] = { function() vim.diagnostic.config({ virtual_text = false }) end, }
 
-map.n["X"] = { "<cmd>noh!<cr>", desc = "Cancel search" }
 
 map.n["<PageUp>"] = { "<cmd>resize +1<CR>", desc = "Resize split up" }
 map.n["<PageDown>"] = { "<cmd>resize -1<CR>", desc = "Resize split down" }
@@ -67,7 +66,6 @@ map.i["<M-UP>"] = { "<cmd>m-2<cr>", desc = "Move line up" }
 
 map.n["<M-Down>"] = { "<cmd>m+1<cr>", desc = "Move line down" }
 map.i["<M-Down>"] = { "<cmd>m+1<cr>", desc = "Move line down" }
-map.n["<c-ESC>"] = { "<c-\\><c-n>" }
 
 --- terminal -----------------------
 map.n["gT"] = { "<cmd>ToggleTerm direction=vertical size=100<cr>", desc = Util.get_icon("Terminal", 1) .. "Terminal" }
@@ -137,7 +135,7 @@ map.n["<leader>f"] = { vim.lsp.buf.format, desc = "Format" }
 map.n["<leader>r"] = { vim.lsp.buf.rename, desc = "Rename" }
 map.n["<leader>d"] = { "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Problems" }
 map.n["<leader>u"]={"<cmd>UndotreeToggle<cr>",desc="History"}
-map.n["<leader>,"] = { "<cmd>Neotree float<cr>", desc = "Explore" }
+map.n["<leader>,"] = { "<cmd>Explore<cr>", desc = "Explore" }
 
 
 Util.setup_keymap(map)

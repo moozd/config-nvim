@@ -1,4 +1,4 @@
--- -- This file is automatically loaded by plugins.core
+vim.g.netrw_banner = 0
 vim.g.mapleader = " "
 vim.opt.guicursor = ""
 
@@ -11,6 +11,10 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
+vim.opt.wildmenu = true
+vim.opt.wildoptions = "fuzzy,tagfile"
+vim.opt.path:append("**")
+vim.opt.wildignore:append("./git/*")
 vim.opt.smartindent = true
 
 vim.opt.wrap = false
