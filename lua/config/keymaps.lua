@@ -130,7 +130,7 @@ map.n["<leader>r"] = { vim.lsp.buf.rename, desc = "Rename" }
 map.n["<leader>d"] = { "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Problems" }
 map.n["<leader>u"]={"<cmd>UndotreeToggle<cr>",desc="History"}
 map.n["<leader>s"] = { "<cmd>Telescope live_grep <cr>", desc = "Find words" }
-map.n["<leader>,"] = { "<cmd>Explore<cr>", desc = "Explore" }
+map.n["<leader>,"] = { "<cmd>Neotree position=current<cr>", desc = "Explore" }
 
 
 Util.setup_keymap(map)

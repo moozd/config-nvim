@@ -25,7 +25,6 @@ return {
 
   {
     "nvim-neo-tree/neo-tree.nvim",
-    enabled = false,
     branch = "v3.x",
     dependencies = {
       "nvim-lua/plenary.nvim",
@@ -83,6 +82,7 @@ return {
 
       filesystem = {
         use_libuv_file_watcher = true,
+        hijack_netrw_behavior = "open_current",
         follow_current_file = {
           enabled = true, -- This will find and focus the file in the active buffer every time
           --               -- the current file is changed while the tree is open.

@@ -107,6 +107,7 @@ return {
     },
     {
         "iamcco/markdown-preview.nvim",
+        enabled=false, -- i can't use this in the terminal 
         config = function()
             vim.fn["mkdp#util#install"]()
         end,
