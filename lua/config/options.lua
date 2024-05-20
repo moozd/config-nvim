@@ -13,12 +13,12 @@ vim.opt.expandtab = true
 
 vim.opt.wildmenu = true
 vim.opt.wildoptions = "fuzzy,tagfile"
-vim.opt.path:append("**")
+-- vim.opt.path:append("**")
 vim.opt.wildignore:append("./git/*")
 vim.opt.wildignore:append("./node_modules/*")
 vim.opt.smartindent = true
 vim.opt.wrap = false
-
+vim.opt.pumheight = 10
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
@@ -35,5 +35,5 @@ vim.opt.isfname:append("@-@")
 vim.opt.splitbelow = true
 vim.opt.splitbelow = true
 
-vim.opt.updatetime = 50
+-- vim.opt.updatetime = 10
 

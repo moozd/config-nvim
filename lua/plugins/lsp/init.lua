@@ -1,5 +1,4 @@
-
-local lsp = require("plugins.lsp.lsp") 
+local lsp = require("plugins.lsp.lsp")
 return {
   {
     "williamboman/mason.nvim",
@@ -13,7 +12,7 @@ return {
       "folke/neodev.nvim",
       "simrat39/rust-tools.nvim",
     },
-    config = lsp.configure
+    config = lsp.configure,
   },
   {
     "L3MON4D3/LuaSnip",
@@ -35,20 +34,20 @@ return {
   -- auto completion
   {
     "hrsh7th/nvim-cmp",
-    version = false, -- last release is way too old
+    -- version = false, -- last rgelease is way too old
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
       "saadparwaiz1/cmp_luasnip",
-      "onsails/lspkind.nvim",
+      -- "onsails/lspkind.nvim",
     },
-    opts = function()
+    config = function()
       vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
       local cmp = require("cmp")
-      return {
+      cmp.setup({
         completion = {
-          completeopt = "menu,menuone",
+          completeopt = "menu,menuone,select",
         },
         snippet = {
           expand = function(args)
@@ -58,49 +57,27 @@ return {
         mapping = cmp.mapping.preset.insert({
           ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
           ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-          ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-          ["<C-f>"] = cmp.mapping.scroll_docs(4),
-          ["<C-Space>"] = cmp.mapping.complete(),
-          ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-          ["<S-CR>"] = cmp.mapping.confirm({
-            behavior = cmp.ConfirmBehavior.Replace,
+          ["<C-y>"] = cmp.mapping.confirm({
+            behavior = cmp.ConfirmBehavior.Insert,
             select = true,
-          }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+          }),
         }),
         sources = cmp.config.sources({
-          { name = "nvim_lsp", group_index = 1, priority = 1500 },
-          { name = "luasnip", group_index = 2, priority = 20 },
-          { name = "codeium" },
-          { name = "path", group_index = 3, keyword_length = 1, priority = 10 },
-          { name = "buffer", group_index = 4, keyword_length = 5, priority = 0 },
-
-          { name = "vim-dadbod-completion", priority = 1500 },
-          { name = "gitmoji", priority = 5 },
+          { name = "luasnip" },
+          { name = "nvim_lsp" },
+          { name = "path" },
+          { name = "buffer" },
+          { name = "vim-dadbod-completion" },
         }),
-        formatting = {
-          format = require("lspkind").cmp_format({
-            mode = "symbol",
-            preset = "codicons",
-          }),
-        },
-      }
+      })
+
+      local ls = require("luasnip")
+      ls.config.set_config({
+        history = false,
+        updateevents = "TextChanged,TextChangedI",
+      })
     end,
   },
-  {
-    "Dynge/gitmoji.nvim",
-    dependencies = {
-      "hrsh7th/nvim-cmp",
-    },
-    opts = { -- the values below are the defaults
-      filetypes = { "gitcommit" },
-      completion = {
-        append_space = false,
-        complete_as = "emoji",
-      },
-    },
-    ft = "gitcommit",
-  },
-
   {
     "folke/trouble.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },

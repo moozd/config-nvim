@@ -1,19 +1,10 @@
 local augroup = require("moozd.util").augroup
 local autocmd = vim.api.nvim_create_autocmd
--- autocmd("CmdlineEnter", {
---   desc = "Open command line",
---   group = augroup("open_command_line"),
+-- autocmd("BufWritePost", {
+--   desc = "Auto format after save",
+--   group = augroup("format_after_save"),
 --   callback = function()
---     vim.o.cmdheight = 2
---   end,
--- })
---
--- autocmd("CmdlineLeave", {
---   desc = "Close command line",
---   group = augroup("close_command_line"),
---   callback = function()
---     vim.cmd('echo ""')
---     vim.o.cmdheight = 0
+--     vim.cmd("silent! lua vim.lsp.buf.format()")
 --   end,
 -- })
 

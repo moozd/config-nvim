@@ -14,6 +14,11 @@ return {
       telescope.setup({
         theme = "cursor",
         shorten_path = true,
+        defaults = {
+          file_ignore_patterns = {
+            "node_modules",
+          },
+        },
       })
 
       telescope.load_extension("file_browser")

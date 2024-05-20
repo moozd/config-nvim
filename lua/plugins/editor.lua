@@ -86,18 +86,18 @@ return {
 
     --- keyword illuminate
     {
-        "RRethy/vim-illuminate",
-        event = { "BufReadPost", "BufNewFile" },
-        opts = {
-            delay = 200,
-            large_file_cutoff = 2000,
-            large_file_overrides = {
-                providers = { "lsp" },
-            },
-        },
-        config = function(_, opts)
-            require("illuminate").configure(opts)
-        end,
+        -- "RRethy/vim-illuminate",
+        -- event = { "BufReadPost", "BufNewFile" },
+        -- opts = {
+        --     delay = 200,
+        --     large_file_cutoff = 2000,
+        --     large_file_overrides = {
+        --         providers = { "lsp" },
+        --     },
+        -- },
+        -- config = function(_, opts)
+        --     require("illuminate").configure(opts)
+        -- end,
     },
     --- auto pairs
     {
@@ -161,4 +161,10 @@ return {
             require("moozd.util").which_key_register()
         end,
     },
+    {
+        "Pocco81/auto-save.nvim",
+        config=function()
+            require("auto-save").setup {}
+        end
+    }
 }

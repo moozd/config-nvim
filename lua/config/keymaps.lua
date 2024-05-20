@@ -11,6 +11,7 @@ map.n["gb"] = {
     desc = "buffers",
 }
 
+map.n["gf"] = { "<cmd>Telescope find_files<cr>", desc = "Find files" }
 map.n["gt"] = {
     "<cmd>Telescope telescope-tabs list_tabs  theme=dropdown previewer=false<cr>",
     desc = Util.get_icon("DefaultFile", 1) .. "Tabs",
@@ -118,19 +119,18 @@ map.n["g2"] = { function() harpoon:list():select(2) end }
 map.n["g3"] = { function() harpoon:list():select(3) end }
 map.n["g4"] = { function() harpoon:list():select(4) end }
 
-
-
-
---- core  --------------------------
-
+--- core  -------------------------
 map.n["<leader>a"] = { function() harpoon:list():add() end, desc = "Remember" }
 map.n["<leader>c"] = { vim.lsp.buf.code_action, desc = "Code actions" }
 map.n["<leader>f"] = { vim.lsp.buf.format, desc = "Format" }
 map.n["<leader>r"] = { vim.lsp.buf.rename, desc = "Rename" }
 map.n["<leader>d"] = { "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Problems" }
-map.n["<leader>u"]={"<cmd>UndotreeToggle<cr>",desc="History"}
-map.n["<leader>s"] = { "<cmd>Telescope live_grep <cr>", desc = "Find words" }
+map.n["<leader>u"] = { "<cmd>UndotreeToggle<cr>",desc="History"}
 map.n["<leader>,"] = { "<cmd>Neotree position=current<cr>", desc = "Explore" }
+map.n["<leader>s"] = { "<cmd>Telescope live_grep<cr>", desc = "Find words" }
 
+-- fast save and quit in normal and insert mode
+map.n["<C-s>"] = {"<cmd>wa<cr>",desc="Save"}
+map.i["<C-s>"] = {"<C-o><cmd>wa<cr>",desc="Save"}
 
 Util.setup_keymap(map)
