@@ -7,13 +7,13 @@ local map = Util.empty_map_table()
 
 --- navigation ---------------------
 map.n["gb"] = {
-    "<cmd>Telescope buffers theme=dropdown previewer=false<cr>",
-    desc = "buffers",
+  "<cmd>Telescope buffers theme=dropdown previewer=false<cr>",
+  desc = "buffers",
 }
 
 map.n["gt"] = {
-    "<cmd>Telescope telescope-tabs list_tabs  theme=dropdown previewer=false<cr>",
-    desc = Util.get_icon("DefaultFile", 1) .. "Tabs",
+  "<cmd>Telescope telescope-tabs list_tabs  theme=dropdown previewer=false<cr>",
+  desc = Util.get_icon("DefaultFile", 1) .. "Tabs",
 }
 
 map.n["]t"] = { "<cmd>tabn<cr>", desc = "tab" }
@@ -21,7 +21,11 @@ map.n["]b"] = { "<cmd>bnext<cr>", desc = "buffer" }
 map.n["]d"] = { vim.diagnostic.goto_next, desc = "problem" }
 map.n["]c"] = { "<cmd>silent! Gitsigns next_hunk<cr>", desc = "change" }
 map.n["]j"] = { "<c-i>", desc = "jump" }
-map.n["]h"] = { function() harpoon:list():next() end }
+map.n["]h"] = {
+  function()
+    harpoon:list():next()
+  end,
+}
 
 map.n["[t"] = { "<cmd>tabp<cr>", desc = "tab" }
 map.n["[b"] = { "<cmd>bprev<cr>", desc = "buffer" }
@@ -29,7 +33,11 @@ map.n["[d"] = { vim.diagnostic.goto_prev, desc = "problem" }
 map.n["[c"] = { "<cmd>silent! Gitsigns prev_hunk<cr>", desc = "change" }
 map.n["[j"] = { "<c-o>", desc = "jump" }
 
-map.n["[h"] = { function() harpoon:list():prev() end }
+map.n["[h"] = {
+  function()
+    harpoon:list():prev()
+  end,
+}
 ---lp
 map.n["gd"] = { vim.lsp.buf.definition, desc = "Go to definitions" }
 map.n["gs"] = { vim.lsp.buf.document_symbol, desc = "Go to document symbols" }
@@ -55,7 +63,6 @@ map.n["gh"] = { function() vim.diagnostic.config({ virtual_text = true }) end, }
 -- stylua: ignore
 map.n["ghh"] = { function() vim.diagnostic.config({ virtual_text = false }) end, }
 
-
 map.n["<PageUp>"] = { "<cmd>resize +1<CR>", desc = "Resize split up" }
 map.n["<PageDown>"] = { "<cmd>resize -1<CR>", desc = "Resize split down" }
 map.n["<C-PageDown>"] = { "<cmd>vertical resize +1<CR>", desc = "Resize split left" }
@@ -69,7 +76,6 @@ map.i["<M-Down>"] = { "<cmd>m+1<cr>", desc = "Move line down" }
 
 --- terminal -----------------------
 map.n["gT"] = { "<cmd>ToggleTerm direction=vertical size=100<cr>", desc = Util.get_icon("Terminal", 1) .. "Terminal" }
-
 
 map.n["<leader>o"] = { desc = "Tasks" }
 map.n["<leader>oo"] = { "<cmd>OverseerToggle right<cr>", desc = "Toggle" }
@@ -112,26 +118,60 @@ map.n["<leader>.b"] = { "<cmd>ToggleTerm<cr>", desc = "Terminal" }
 --
 --Harpoon------------------
 
-map.n["<C-e>"] = { function() harpoon.ui:toggle_quick_menu(harpoon:list()) end }
-map.n["g1"] = { function() harpoon:list():select(1) end }
-map.n["g2"] = { function() harpoon:list():select(2) end }
-map.n["g3"] = { function() harpoon:list():select(3) end }
-map.n["g4"] = { function() harpoon:list():select(4) end }
+map.n["<C-e>"] = {
+  function()
+    harpoon.ui:toggle_quick_menu(harpoon:list())
+  end,
+}
+map.n["g1"] = {
+  function()
+    harpoon:list():select(1)
+  end,
+}
+map.n["g2"] = {
+  function()
+    harpoon:list():select(2)
+  end,
+}
+map.n["g3"] = {
+  function()
+    harpoon:list():select(3)
+  end,
+}
+map.n["g4"] = {
+  function()
+    harpoon:list():select(4)
+  end,
+}
 
 --- core  -------------------------
-map.n["<leader>a"] = { function() harpoon:list():add() end, desc = "Remember" }
+map.n["<leader>a"] = {
+  function()
+    harpoon:list():add()
+  end,
+  desc = "Remember",
+}
 map.n["<leader>c"] = { vim.lsp.buf.code_action, desc = "Code actions" }
 map.n["<leader>f"] = { vim.lsp.buf.format, desc = "Format" }
 map.n["<leader>r"] = { vim.lsp.buf.rename, desc = "Rename" }
 map.n["<leader>d"] = { "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Problems" }
-map.n["<leader>u"] = { "<cmd>UndotreeToggle<cr>",desc="History"}
+map.n["<leader>u"] = { "<cmd>UndotreeToggle<cr>", desc = "History" }
 map.n["<leader>,"] = { "<cmd>Neotree position=current<cr>", desc = "Explore" }
 map.n["<leader>s"] = { "<cmd>Telescope live_grep<cr>", desc = "Find words" }
 map.n["<leader>E"] = { "<cmd>Telescope find_files<cr>", desc = "Find files" }
-map.n["<leader>e"] = { "<cmd>Telescope git_files<cr>", desc = "Find files" }
+map.n["<leader>e"] = {
+  function()
+    local t = require("telescope.builtin")
+    local ok = pcall(t.git_files)
+    if not ok then
+      t.find_files()
+    end
+  end,
+  desc = "Find files",
+}
 
 -- fast save and quit in normal and insert mode
-map.n["<C-s>"] = {"<cmd>wa<cr>",desc="Save"}
-map.i["<C-s>"] = {"<C-o><cmd>wa<cr>",desc="Save"}
+map.n["<C-s>"] = { "<cmd>wa<cr>", desc = "Save" }
+map.i["<C-s>"] = { "<C-o><cmd>wa<cr>", desc = "Save" }
 
 Util.setup_keymap(map)
