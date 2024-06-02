@@ -11,7 +11,13 @@ require("lazy").setup({
   spec = {
     { "rktjmp/lush.nvim", lazy = false },
     { "mcchrish/zenbones.nvim", lazy = false },
-    { "catppuccin/nvim", lazy = false },
+    {
+      "catppuccin/nvim",
+      lazy = false,
+      config = function()
+        require("catppuccin").setup({ no_italic = true })
+      end,
+    },
     { import = "plugins" },
   },
 

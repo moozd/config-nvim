@@ -127,7 +127,8 @@ map.n["<leader>d"] = { "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "P
 map.n["<leader>u"] = { "<cmd>UndotreeToggle<cr>",desc="History"}
 map.n["<leader>,"] = { "<cmd>Neotree position=current<cr>", desc = "Explore" }
 map.n["<leader>s"] = { "<cmd>Telescope live_grep<cr>", desc = "Find words" }
-map.n["<leader>e"] = { "<cmd>Telescope find_files<cr>", desc = "Find files" }
+map.n["<leader>E"] = { "<cmd>Telescope find_files<cr>", desc = "Find files" }
+map.n["<leader>e"] = { "<cmd>Telescope git_files<cr>", desc = "Find files" }
 
 -- fast save and quit in normal and insert mode
 map.n["<C-s>"] = {"<cmd>wa<cr>",desc="Save"}
