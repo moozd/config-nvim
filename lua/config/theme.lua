@@ -1,6 +1,6 @@
 vim.cmd.colorscheme("catppuccin")
 
-vim.api.nvim_set_hl(0, "StatusLine", { fg = "#1e212e" ,bg="#9399b2", bold=false})
+vim.api.nvim_set_hl(0, "StatusLine", { fg = "#1e212e" ,bg="#585b70", bold=false})
 vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "none",fg="#6c7086", italic = false })
 
 vim.cmd("highlight DiagnosticUnderlineInfo cterm=undercurl gui=undercurl")
