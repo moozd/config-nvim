@@ -1,6 +1,6 @@
 vim.g.netrw_banner = 0
 vim.g.mapleader = " "
--- vim.opt.guicursor = ""
+vim.opt.guicursor = ""
 
 vim.opt.clipboard = "unnamedplus" -- Sync with system clipboard
 vim.opt.nu = true
@@ -34,6 +34,11 @@ vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 vim.opt.splitbelow = true
 vim.opt.splitbelow = true
+
+
+-- spell check
+vim.opt.spelllang = 'en_us'
+vim.opt.spell = false
 
 -- vim.opt.updatetime = 10
 
