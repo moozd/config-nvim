@@ -39,3 +39,11 @@ autocmd("TermOpen", {
   command = "setlocal nonumber norelativenumber",
 })
 
+
+autocmd("ModeChanged", {
+    group=augroup("fix_statusline"),
+    callback=function ()
+        vim.schedule(vim.cmd.redraw)
+    end
+})
+
