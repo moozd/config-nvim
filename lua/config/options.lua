@@ -33,12 +33,10 @@ vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 vim.opt.splitbelow = true
-vim.opt.splitbelow = true
 
 -- spell check
 vim.opt.spelllang = "en_us"
 vim.opt.spell = false
-
 
 function UD_status_line_current_mode()
   local modes = {
@@ -63,17 +61,19 @@ function UD_status_line_current_mode()
 end
 
 function UD_recording_macro()
-    local reg_recording = vim.fn.reg_recording()
-    if reg_recording ~= "" then
-        return "recording @" .. reg_recording
-    else
-        return ""
-    end
+  local reg_recording = vim.fn.reg_recording()
+  if reg_recording ~= "" then
+    return "recording @" .. reg_recording
+  else
+    return ""
+  end
 end
 
 -- Set the statusline to include the current mode
-vim.opt.showcmdloc = "statusline"
-vim.opt.cmdheight = 0
-vim.opt.statusline = " %{v:lua.UD_status_line_current_mode()}   %f %m %r %= %S       %{v:lua.UD_recording_macro()}    %-14.(%l,%c%V%) %P "
+-- vim.opt.showcmdloc = "statusline"
+vim.opt.cmdheight = 1
+vim.opt.showmode = false
+vim.opt.laststatus = 2
+vim.opt.statusline = " %{v:lua.UD_status_line_current_mode()}   %f %m %r %=   %-14.(%l,%c%V%) %P "
 
 -- vim.optdatetime = 10
