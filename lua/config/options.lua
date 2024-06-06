@@ -70,10 +70,10 @@ function UD_recording_macro()
 end
 
 -- Set the statusline to include the current mode
--- vim.opt.showcmdloc = "statusline"
-vim.opt.cmdheight = 1
+vim.opt.showcmdloc = "statusline"
+vim.opt.cmdheight = 0
 vim.opt.showmode = false
 vim.opt.laststatus = 2
-vim.opt.statusline = " %{v:lua.UD_status_line_current_mode()}   %f %m %r %=   %-14.(%l,%c%V%) %P "
+vim.opt.statusline = " %{v:lua.UD_status_line_current_mode()}   %f %m %r %= %{v:lua.UD_recording_macro()}    %S    %-13.(%l,%c%V%) %P "
 
 -- vim.optdatetime = 10
