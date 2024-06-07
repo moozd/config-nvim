@@ -154,7 +154,7 @@ map.n["<leader>a"] = {
 map.n["<leader>c"] = { vim.lsp.buf.code_action, desc = "Code actions" }
 map.n["<leader>f"] = { vim.lsp.buf.format, desc = "Format" }
 map.n["<leader>r"] = { vim.lsp.buf.rename, desc = "Rename" }
-map.n["<leader>d"] = { "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Problems" }
+map.n["<leader>t"] = { "<cmd>Trouble<cr>", desc = "Troubles" }
 map.n["<leader>u"] = { "<cmd>UndotreeToggle<cr>", desc = "History" }
 map.n["<leader>,"] = { "<cmd>Neotree position=current<cr>", desc = "Explore" }
 map.n["<leader>s"] = { "<cmd>Telescope live_grep<cr>", desc = "Find words" }

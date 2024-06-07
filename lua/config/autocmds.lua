@@ -39,6 +39,13 @@ autocmd("TermOpen", {
   command = "setlocal nonumber norelativenumber",
 })
 
+autocmd("ModeChanged", {
+  group = augroup("fix_statusline"),
+  callback = function()
+    vim.schedule(vim.cmd.redraw)
+  end,
+})
+
 local cmd_height_adj_grp = vim.api.nvim_create_augroup("cmd_line_adjust", { clear = true })
 autocmd("CmdlineEnter", {
   group = cmd_height_adj_grp,
@@ -50,6 +57,8 @@ autocmd("CmdlineEnter", {
 autocmd("CmdlineLeave", {
   group = cmd_height_adj_grp,
   callback = function()
-    vim.o.cmdheight = 0
+    vim.defer_fn(function()
+      vim.o.cmdheight = 0
+    end, 1000)
   end,
 })
