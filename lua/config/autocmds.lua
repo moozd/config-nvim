@@ -59,6 +59,6 @@ autocmd("CmdlineLeave", {
   callback = function()
     vim.defer_fn(function()
       vim.o.cmdheight = 0
-    end, 1000)
+    end, 300)
   end,
 })

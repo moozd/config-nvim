@@ -14,7 +14,7 @@ return {
       "nvim-tree/nvim-web-devicons",
     },
     opts = {
-      lang = "javascript", -- configuration goes here
+      lang = "python3", -- configuration goes here
     },
   },
 }
