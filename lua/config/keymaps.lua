@@ -63,10 +63,10 @@ map.n["gh"] = { function() vim.diagnostic.config({ virtual_text = true }) end, }
 -- stylua: ignore
 map.n["ghh"] = { function() vim.diagnostic.config({ virtual_text = false }) end, }
 
-map.n["<Up>"] = { "<cmd>resize +1<CR>", desc = "Resize split up" }
-map.n["<Down>"] = { "<cmd>resize -1<CR>", desc = "Resize split down" }
-map.n["<Left>"] = { "<cmd>vertical resize +1<CR>", desc = "Resize split left" }
-map.n["<Right>"] = { "<cmd>vertical resize -1<CR>", desc = "Resize split right" }
+-- map.n["<Up>"] = { "<cmd>resize +1<CR>", desc = "Resize split up" }
+-- map.n["<Down>"] = { "<cmd>resize -1<CR>", desc = "Resize split down" }
+-- map.n["<Left>"] = { "<cmd>vertical resize +1<CR>", desc = "Resize split left" }
+-- map.n["<Right>"] = { "<cmd>vertical resize -1<CR>", desc = "Resize split right" }
 --
 map.n["<M-UP>"] = { "<cmd>m-2<cr>", desc = "Move line up" }
 map.i["<M-UP>"] = { "<cmd>m-2<cr>", desc = "Move line up" }

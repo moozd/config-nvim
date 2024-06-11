@@ -33,6 +33,7 @@ vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 vim.opt.splitbelow = true
+vim.opt.splitright = true
 
 -- spell check
 vim.opt.spelllang = "en_us"

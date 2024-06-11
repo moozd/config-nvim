@@ -1,6 +1,6 @@
 vim.cmd.colorscheme("catppuccin")
 
-vim.api.nvim_set_hl(0, "StatusLine", { fg = "#1e212e", bg = "#b4befe", bold = false })
+vim.api.nvim_set_hl(0, "StatusLine", { fg = "#1e212e", bg = "#94e2d5", bold = false })
 vim.api.nvim_set_hl(0, "StatusLineNC", { fg = "#1e212e", bg = "#6c7086", italic = false })
 
 vim.cmd("highlight DiagnosticUnderlineInfo cterm=undercurl gui=undercurl")
@@ -8,10 +8,6 @@ vim.cmd("highlight DiagnosticUnderlineError cterm=undercurl gui=undercurl")
 vim.cmd("highlight DiagnosticUnderlineWarn cterm=undercurl gui=undercurl")
 vim.cmd("highlight DiagnosticUnderlineHint cterm=undercurl gui=undercurl")
 vim.cmd("highlight DiagnosticUnderlineOk cterm=undercurl gui=undercurl")
-
-
-
-
 
 function UD_status_line_current_mode()
   local modes = {
@@ -45,8 +41,21 @@ function UD_recording_macro()
 end
 
 -- Set the statusline to include the current mode
-vim.opt.showcmdloc = "statusline"
-vim.opt.cmdheight = 0
-vim.opt.showmode = false
+-- vim.opt.showcmdloc = "statusline"
+-- vim.opt.showmode = false
+vim.opt.cmdheight = 1
 vim.opt.laststatus = 2
-vim.opt.statusline = " %{v:lua.UD_status_line_current_mode()}   %f %m %r %= %{v:lua.UD_recording_macro()}    %S    %-13.(%l,%c%V%) %P "
+vim.opt.statusline:append(" ")
+if vim.opt.showmode == false then
+  vim.opt.statusline:append("%{v:lua.UD_status_line_current_mode()} ")
+end
+vim.opt.statusline:append("%f ")
+vim.opt.statusline:append("%m ")
+vim.opt.statusline:append("%r ")
+vim.opt.statusline:append("%= ")
+if vim.opt.showcmdloc == "statusline" then
+  vim.opt.statusline:append("%{v:lua.UD_recording_macro()}    ")
+  vim.opt.statusline:append("%S    ")
+end
+vim.opt.statusline:append("%-13.(%l,%c%V%) %P")
+vim.opt.statusline:append(" ")
