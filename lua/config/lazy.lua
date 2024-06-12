@@ -10,13 +10,9 @@ vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 require("lazy").setup({
   spec = {
     { "rktjmp/lush.nvim", lazy = false },
-    { "projekt0n/github-nvim-theme", lazy = false },
     {
       "catppuccin/nvim",
       lazy = false,
-      config = function()
-        require("catppuccin").setup({ no_italic = true })
-      end,
     },
     { import = "plugins" },
   },

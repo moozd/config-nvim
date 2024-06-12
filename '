@@ -1,0 +1,75 @@
+require("catppuccin").setup({
+  -- no_italic = true,
+  styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
+    comments = {}, -- Change the style of comments
+    conditionals = { "italic" },
+    loops = { "italic" },
+    functions = {},
+    keywords = { "italic" },
+    strings = {},
+    variables = {},
+    numbers = {},
+    booleans = {},
+    properties = {},
+    types = {},
+    operators = {},
+    -- miscs = {}, -- Uncomment to turn off hard-coded styles
+  },
+})
+vim.cmd.colorscheme("catppuccin-frappe")
+
+vim.api.nvim_set_hl(0, "StatusLine", { fg = "#1e212e", bg = "#89b4fa", bold = false })
+vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "#1e212e", fg = "#89b4fa", bold = false })
+
+vim.cmd("highlight DiagnosticUnderlineInfo cterm=undercurl gui=undercurl")
+vim.cmd("highlight DiagnosticUnderlineError cterm=undercurl gui=undercurl")
+vim.cmd("highlight DiagnosticUnderlineWarn cterm=undercurl gui=undercurl")
+vim.cmd("highlight DiagnosticUnderlineHint cterm=undercurl gui=undercurl")
+vim.cmd("highlight DiagnosticUnderlineOk cterm=undercurl gui=undercurl")
+
+function UD_status_line_current_mode()
+  local modes = {
+    n = "NORMAL",
+    no = "NORMAL",
+    i = "INSERT",
+    v = "VISUAL",
+    V = "V-LINE",
+    [""] = "V-BLOCK",
+    c = "COMMAND",
+    R = "REPLACE",
+    Rv = "V-REPLACE",
+    s = "SELECT",
+    S = "S-LINE",
+    [""] = "S-BLOCK",
+    t = "TERMINAL",
+    ["!"] = "SHELL",
+  }
+
+  local mode_code = vim.api.nvim_get_mode().mode
+  return modes[mode_code] or "UNKNOWN"
+end
+
+function UD_recording_macro()
+  local reg_recording = vim.fn.reg_recording()
+  if reg_recording ~= "" then
+    return "recording @" .. reg_recording
+  else
+    return ""
+  end
+end
+
+-- Set the statusline to include the current mode
+vim.opt.showcmdloc = "statusline"
+vim.opt.showmode = false
+vim.opt.cmdheight = 0
+vim.opt.laststatus = 2
+vim.opt.statusline:append(" ")
+vim.opt.statusline:append("%{v:lua.UD_status_line_current_mode()} ")
+vim.opt.statusline:append("%f ")
+vim.opt.statusline:append("%m ")
+vim.opt.statusline:append("%r ")
+vim.opt.statusline:append("%= ")
+vim.opt.statusline:append("%{v:lua.UD_recording_macro()}    ")
+vim.opt.statusline:append("%S    ")
+vim.opt.statusline:append("%-13.(%l,%c%V%) %P")
+vim.opt.statusline:append(" ")
