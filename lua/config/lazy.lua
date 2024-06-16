@@ -9,11 +9,6 @@ vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
 require("lazy").setup({
   spec = {
-    { "rktjmp/lush.nvim", lazy = false },
-    {
-      "catppuccin/nvim",
-      lazy = false,
-    },
     { import = "plugins" },
   },
 

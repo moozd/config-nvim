@@ -1,4 +1,3 @@
-local icons = require("moozd.util").icons
 return {
 
     { "tpope/vim-fugitive" },
@@ -16,7 +15,7 @@ return {
                 },
 
                 current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
-                current_line_blame_formatter = icons.Git .. " <author>, <author_time:%R> - <summary>",
+                current_line_blame_formatter = " <author>, <author_time:%R> - <summary>",
                 current_line_blame_opts = {
                     virt_text = true,
                     virt_text_pos = "right_align", -- 'eol' | 'overlay' | 'right_align'

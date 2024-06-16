@@ -1,23 +1,14 @@
 local Util = require("moozd.util")
-local Apps = require("moozd.apps")
 local dap, dapui = require("dap"), require("dapui")
 local harpoon = require("harpoon")
 
 local map = Util.empty_map_table()
 
 --- navigation ---------------------
-map.n["gb"] = {
-  "<cmd>Telescope buffers theme=dropdown previewer=false<cr>",
-  desc = "buffers",
-}
 
-map.n["gt"] = {
-  "<cmd>Telescope telescope-tabs list_tabs  theme=dropdown previewer=false<cr>",
-  desc = Util.get_icon("DefaultFile", 1) .. "Tabs",
-}
+vim.keymap.set("n", "]t", "<cmd>tabn<cr>")
+vim.keymap.set("n", "]b", "<cmd>bnext<cr>")
 
-map.n["]t"] = { "<cmd>tabn<cr>", desc = "tab" }
-map.n["]b"] = { "<cmd>bnext<cr>", desc = "buffer" }
 map.n["]d"] = { vim.diagnostic.goto_next, desc = "problem" }
 map.n["]c"] = { "<cmd>silent! Gitsigns next_hunk<cr>", desc = "change" }
 map.n["]j"] = { "<c-i>", desc = "jump" }
@@ -74,9 +65,7 @@ map.i["<M-UP>"] = { "<cmd>m-2<cr>", desc = "Move line up" }
 map.n["<M-Down>"] = { "<cmd>m+1<cr>", desc = "Move line down" }
 map.i["<M-Down>"] = { "<cmd>m+1<cr>", desc = "Move line down" }
 
---- terminal -----------------------
-map.n["gT"] = { "<cmd>ToggleTerm direction=vertical size=100<cr>", desc = Util.get_icon("Terminal", 1) .. "Terminal" }
-
+--- Run -----------------------
 map.n["<leader>o"] = { desc = "Tasks" }
 map.n["<leader>oo"] = { "<cmd>OverseerToggle right<cr>", desc = "Toggle" }
 map.n["<leader>oi"] = { "<cmd>OverseerInfo<cr>", desc = "Info" }
@@ -109,48 +98,7 @@ map.n["<leader>gb"] = { "<cmd>Git blame<cr>", desc = "Blame" }
 map.n["<leader>gl"] = { "<cmd>Gitsigns toggle_current_line_blame<cr>", desc = "Blame line" }
 map.n["<leader>gh"] = { "<cmd>Gitsigns preview_hunk_inline<cr>", desc = "Preview hunk" }
 
---- Apps -------------------------------
-map.n["<leader>."] = { desc = "Apps" }
-map.n["<leader>.g"] = { Apps.lazygit, desc = "Git" }
-map.n["<leader>.d"] = { Apps.lazydocker, desc = "Docker" }
-map.n["<leader>.r"] = { Apps.glow, desc = "Readme" }
-map.n["<leader>.b"] = { "<cmd>ToggleTerm<cr>", desc = "Terminal" }
---
---Harpoon------------------
-
-map.n["<C-e>"] = {
-  function()
-    harpoon.ui:toggle_quick_menu(harpoon:list())
-  end,
-}
-map.n["g1"] = {
-  function()
-    harpoon:list():select(1)
-  end,
-}
-map.n["g2"] = {
-  function()
-    harpoon:list():select(2)
-  end,
-}
-map.n["g3"] = {
-  function()
-    harpoon:list():select(3)
-  end,
-}
-map.n["g4"] = {
-  function()
-    harpoon:list():select(4)
-  end,
-}
-
 --- core  -------------------------
-map.n["<leader>a"] = {
-  function()
-    harpoon:list():add()
-  end,
-  desc = "Remember",
-}
 map.n["<leader>c"] = { vim.lsp.buf.code_action, desc = "Code actions" }
 map.n["<leader>f"] = { vim.lsp.buf.format, desc = "Format" }
 map.n["<leader>r"] = { vim.lsp.buf.rename, desc = "Rename" }
@@ -169,9 +117,5 @@ map.n["<leader>e"] = {
   end,
   desc = "Find files",
 }
-
--- fast save and quit in normal and insert mode
-map.n["<C-s>"] = { "<cmd>wa<cr>", desc = "Save" }
-map.i["<C-s>"] = { "<C-o><cmd>wa<cr>", desc = "Save" }
 
 Util.setup_keymap(map)

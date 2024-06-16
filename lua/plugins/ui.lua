@@ -1,27 +1,4 @@
-local Util = require("moozd.util")
-
 return {
-  {
-    "rcarriga/nvim-notify",
-    enabled = false,
-    init = function()
-      Util.load_plugin_with_func("nvim-notify", vim, "notify")
-    end,
-  },
-  {
-    "stevearc/dressing.nvim",
-
-    init = function()
-      Util.load_plugin_with_func("dressing.nvim", vim.ui, { "input", "select" })
-    end,
-
-    opts = {
-      input = { default_prompt = "-> " },
-      select = {
-        backend = { "telescope", "builtin" },
-      },
-    },
-  },
 
   {
     "nvim-neo-tree/neo-tree.nvim",
@@ -35,7 +12,7 @@ return {
       popup_border_style = "rounded",
       enable_git_status = true,
       enable_diagnostics = true,
-      sources = { "filesystem", "buffers", "git_status" },
+      sources = { "filesystem" },
       follow_current_file = true,
       config = function()
         require("neo-tree").close_all()
@@ -52,31 +29,7 @@ return {
         winbar = false,
         content_layout = "center",
         sources = {
-          { source = "filesystem", display_name = Util.get_icon("FolderClosed", 1) .. "File" },
-          -- { source = "buffers", display_name = Util.get_icon("DefaultFile", 1) .. "Bufs" },
-          -- { source = "git_status", display_name = Util.get_icon("Git", 1) .. "Git" },
-          -- { source = "diagnostics", display_name = Util.get_icon("Diagnostic", 1) .. "Diagnostic" },
-        },
-      },
-      default_component_configs = {
-        modified = {
-          symbol = Util.icons.FileModified,
-          highlight = "NeoTreeModified",
-        },
-        git_status = {
-          symbols = {
-            -- Change type
-            added = Util.icons.GitAdd, -- or "✚", but this is redundant info if you use git_status_colors on the name
-            modified = Util.icons.GitChange, -- or "", but this is redundant info if you use git_status_colors on the name
-            deleted = Util.icons.GitDelete, -- this can only be used in the git_status source
-            renamed = Util.icons.GitRenamed, -- this can only be used in the git_status source
-            -- Status type
-            untracked = Util.icons.GitUntracked,
-            ignored = Util.icons.GitIgnored,
-            unstaged = Util.icons.GitUnstaged,
-            staged = Util.icons.GitStaged,
-            conflict = Util.icons.GitConflict,
-          },
+          { source = "filesystem", display_name = "File" },
         },
       },
 
@@ -101,9 +54,6 @@ return {
             "thumbs.db",
           },
         },
-      },
-      window = {
-        position = "left",
       },
     },
   },

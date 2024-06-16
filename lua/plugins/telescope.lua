@@ -6,13 +6,12 @@ return {
       "antoinemadec/telescope-git-browse.nvim",
       "nvim-telescope/telescope-file-browser.nvim",
       "lewis6991/gitsigns.nvim",
-      "camgraff/telescope-tmux.nvim",
       "radyz/telescope-gitsigns",
     },
     config = function()
       local telescope = require("telescope")
       telescope.setup({
-        theme = "cursor",
+        theme = "dropdown",
         shorten_path = true,
         defaults = {
           file_ignore_patterns = {
@@ -24,7 +23,6 @@ return {
       telescope.load_extension("file_browser")
       telescope.load_extension("git_browse")
       telescope.load_extension("git_signs")
-      telescope.load_extension("tmux")
     end,
   },
 }

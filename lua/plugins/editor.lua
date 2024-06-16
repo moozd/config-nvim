@@ -19,7 +19,7 @@ return {
     -- you can specify also another config if you want
     config = function()
       require("gx").setup({
-        open_browser_app = "open", -- specify your browser app; default for macOS is "open", Linux "xdg-open" and Windows "powershell.exe"
+        open_browser_app = "xdg-open", -- specify your browser app; default for macOS is "open", Linux "xdg-open" and Windows "powershell.exe"
         handlers = {
           plugin = true, -- open plugin links in lua (e.g. packer, lazy, ..)
           github = true, -- open github issues
@@ -32,14 +32,6 @@ return {
         },
       })
     end,
-  },
-  {
-    "folke/zen-mode.nvim",
-    opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-    },
   },
   --- syntax
   {
@@ -78,26 +70,10 @@ return {
 
   {
     "NvChad/nvim-colorizer.lua",
-    enabled = false,
+    enabled = true,
     config = function()
       require("colorizer").setup({}, { names = false })
     end,
-  },
-
-  --- keyword illuminate
-  {
-    -- "RRethy/vim-illuminate",
-    -- event = { "BufReadPost", "BufNewFile" },
-    -- opts = {
-    --     delay = 200,
-    --     large_file_cutoff = 2000,
-    --     large_file_overrides = {
-    --         providers = { "lsp" },
-    --     },
-    -- },
-    -- config = function(_, opts)
-    --     require("illuminate").configure(opts)
-    -- end,
   },
   --- auto pairs
   {
@@ -129,6 +105,9 @@ return {
         end,
       },
     },
+  },
+  {
+    "echasnovski/mini.ai",
   },
   {
     "smjonas/inc-rename.nvim",

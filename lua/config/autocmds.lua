@@ -1,12 +1,7 @@
-local augroup = require("moozd.util").augroup
 local autocmd = vim.api.nvim_create_autocmd
--- autocmd("BufWritePost", {
---   desc = "Auto format after save",
---   group = augroup("format_after_save"),
---   callback = function()
---     vim.cmd("silent! lua vim.lsp.buf.format()")
---   end,
--- })
+local augroup = function(name)
+  vim.api.nvim_create_augroup("moozd_" .. name, { clear = true })
+end
 
 -- Highlight on yank
 autocmd("TextYankPost", {
@@ -38,27 +33,3 @@ autocmd("TermOpen", {
   group = augroup("disable_term_line_no"),
   command = "setlocal nonumber norelativenumber",
 })
-
--- autocmd("ModeChanged", {
---   group = augroup("fix_statusline"),
---   callback = function()
---     vim.schedule(vim.cmd.redraw)
---   end,
--- })
-
--- local cmd_height_adj_grp = vim.api.nvim_create_augroup("cmd_line_adjust", { clear = true })
--- autocmd("CmdlineEnter", {
---   group = cmd_height_adj_grp,
---   callback = function()
---     vim.o.cmdheight = 1
---   end,
--- })
---
--- autocmd("CmdlineLeave", {
---   group = cmd_height_adj_grp,
---   callback = function()
---     vim.defer_fn(function()
---       vim.o.cmdheight = 0
---     end, 2000)
---   end,
--- })
