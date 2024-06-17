@@ -62,4 +62,17 @@ return {
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = {},
   },
+  {
+    "stevearc/dressing.nvim",
+    opts = {
+      input = {
+        border = "none",
+      },
+      select = {
+        backend = "telescope",
+        border = "none",
+        telescope = nil,
+      },
+    },
+  },
 }

@@ -11,13 +11,17 @@ return {
     config = function()
       local telescope = require("telescope")
       telescope.setup({
-        theme = "dropdown",
+        theme = "ivy",
         shorten_path = true,
-        defaults = {
-          file_ignore_patterns = {
-            "node_modules",
-          },
-        },
+        defaults = vim.tbl_extend(
+          "force",
+          require("telescope.themes").get_ivy(), -- or get_cursor, get_ivy
+          {
+            file_ignore_patterns = {
+              "node_modules",
+            },
+          }
+        ),
       })
 
       telescope.load_extension("file_browser")
