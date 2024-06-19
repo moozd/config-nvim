@@ -1,51 +1,38 @@
 local map = vim.keymap.set
 
---- navigation ---------------------
-
+map("n", "]j", "<c-i>")
+map("n", "[j", "<c-o>")
 map("n", "]t", "<cmd>tabn<cr>")
+map("n", "[t", "<cmd>tabp<cr>")
 map("n", "]b", "<cmd>bnext<cr>")
+map("n", "[b", "<cmd>bprev<cr>")
+map("n", "]d", vim.diagnostic.goto_next)
+map("n", "[d", vim.diagnostic.goto_prev)
+map("n", "]c", "<cmd>silent! Gitsigns next_hunk<cr>")
+map("n", "[c", "<cmd>silent! Gitsigns prev_hunk<cr>")
 
-map("n","]d", vim.diagnostic.goto_next)
-map("n","]c", "<cmd>silent! Gitsigns next_hunk<cr>")
-map("n","]j", "<c-i>")
-map("n","[t", "<cmd>tabp<cr>")
-map("n","[b", "<cmd>bprev<cr>")
-map("n","[d", vim.diagnostic.goto_prev)
-map("n","[c", "<cmd>silent! Gitsigns prev_hunk<cr>")
-map("n","[j", "<c-o>")
+map("n", "gd", vim.lsp.buf.definition)
+map("n", "gs", vim.lsp.buf.document_symbol)
+map("n", "gS", vim.lsp.buf.workspace_symbol)
+map("n", "gr", vim.lsp.buf.references)
+map("n", "gi", vim.lsp.buf.implementation)
+map("n", "gk", vim.lsp.buf.hover)
 
----lp
-map("n","gd", vim.lsp.buf.definition)
-map("n","gs", vim.lsp.buf.document_symbol)
-map("n","gS", vim.lsp.buf.workspace_symbol)
-map("n","gr", vim.lsp.buf.references)
-map("n","gi", vim.lsp.buf.implementation)
-map("n","gk", vim.lsp.buf.hover)
+map({ "n", "i" }, "<M-UP>", "<cmd>m-2<cr>")
+map({ "n", "i" }, "<M-Down>", "<cmd>m+1<cr>")
 
-map("n","<ESC>" , "<cmd>silent! noh<cr>" )
-map("n","<M-UP>", "<cmd>m-2<cr>")
-map("i","<M-UP>", "<cmd>m-2<cr>")
+map("n", "<leader>or", "<cmd>OverseerRun<cr>")
+map("n", "<leader>oa", "<cmd>OverseerTaskAction<cr>")
 
-map("n","<M-Down>", "<cmd>m+1<cr>")
-map("i","<M-Down>", "<cmd>m+1<cr>")
+map("n", "<leader>gd", "<cmd>Gdiffsplit<cr>")
+map("n", "<leader>gc", "<cmd>BCommits<cr>")
+map("n", "<leader>gb", "<cmd>Git blame<cr>")
+map("n", "<leader>gh", "<cmd>Gitsigns preview_hunk_inline<cr>")
 
---- Run -----------------------
-map("n","<leader>or", "<cmd>OverseerRun<cr>")
-map("n","<leader>oa", "<cmd>OverseerTaskAction<cr>")
-
-
---- Git --------------------------------
-map("n","<leader>gd", "<cmd>Gdiffsplit<cr>")
-map("n","<leader>gc", "<cmd>BCommits<cr>")
-map("n","<leader>gb", "<cmd>Git blame<cr>")
-map("n","<leader>gh", "<cmd>Gitsigns preview_hunk_inline<cr>")
-
---- core  -------------------------
-map("n","<leader>c" , vim.lsp.buf.code_action)
-map("n","<leader>f" , vim.lsp.buf.format )
-map("n","<leader>r" , vim.lsp.buf.rename )
-map("n","<leader>t" , "<cmd>Trouble<cr>") 
-map("n","<leader>s" , "<cmd>Telescope live_grep<cr>")
-map("n","<leader>e" , "<cmd>Telescope find_files<cr>")
 map("n", "<leader>,", "<cmd>Explore<cr>")
-
+map("n", "<leader>t", "<cmd>Trouble<cr>")
+map("n", "<leader>s", "<cmd>Telescope live_grep<cr>")
+map("n", "<leader>e", "<cmd>Telescope find_files<cr>")
+map("n", "<leader>c", vim.lsp.buf.code_action)
+map("n", "<leader>f", vim.lsp.buf.format)
+map("n", "<leader>r", vim.lsp.buf.rename)

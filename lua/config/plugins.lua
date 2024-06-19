@@ -149,6 +149,7 @@ return {
   -- code editig tools
   {
     "folke/trouble.nvim",
+    opts = {},
   },
   { "tpope/vim-fugitive" },
   {
