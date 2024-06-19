@@ -21,14 +21,13 @@ return {
   {
     "williamboman/mason.nvim",
     dependencies = {
-      "folke/neodev.nvim",
       "neovim/nvim-lspconfig",
       "williamboman/mason-lspconfig.nvim",
-      "nvimtools/none-ls.nvim",
       "jay-babu/mason-null-ls.nvim",
+      "nvimtools/none-ls.nvim",
+      "simrat39/rust-tools.nvim",
       "folke/neoconf.nvim",
       "folke/neodev.nvim",
-      "simrat39/rust-tools.nvim",
     },
     config = function()
       require("neoconf").setup({})
@@ -198,7 +197,8 @@ return {
       require("template-string").setup()
     end,
   },
-  -- misc
+
+  ------------------ misc
   {
     "nvim-telescope/telescope.nvim",
     dependencies = {
