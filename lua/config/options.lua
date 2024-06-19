@@ -13,9 +13,9 @@ vim.opt.expandtab = true
 
 vim.opt.wildmenu = true
 vim.opt.wildoptions = "fuzzy,tagfile"
-vim.opt.path:append("**")
-vim.opt.wildignore:append("./git/*")
-vim.opt.wildignore:append("./node_modules/*")
+-- vim.opt.path:append("**")
+-- vim.opt.wildignore:append("./git/*")
+-- vim.opt.wildignore:append("./node_modules/*")
 vim.opt.smartindent = true
 vim.opt.wrap = false
 vim.opt.pumheight = 10
@@ -36,7 +36,10 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 
 -- spell check
-vim.opt.spelllang = "en_us"
-vim.opt.spell = false
-
+-- vim.opt.spelllang = "en_us"
+-- vim.opt.spell = false
+vim.g.loaded_node_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_python_provider = 0
+vim.g.loaded_ruby_provider = 0
 -- vim.optdatetime = 10
