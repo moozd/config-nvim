@@ -7,7 +7,7 @@ function Theme:new(o)
   return o
 end
 
-function Theme:create_highlight_groups()
+function Theme:create_highlight_groups(opts)
   local h = vim.api.nvim_set_hl
   -- Diagnostic
   h(0, "DiagnosticUnderlineOk", { undercurl = true })
@@ -17,7 +17,9 @@ function Theme:create_highlight_groups()
   h(0, "DiagnosticUnderlineError", { undercurl = true })
 
   -- interface
-  -- h(0, "Normal", { bg = "None" })
+  if opts["transparent"] then
+    h(0, "Normal", { bg = "None" })
+  end
   h(0, "NormalNC", { link = "Normal" })
   h(0, "LineNr", { link = "Normal" })
   h(0, "SignColumn", { link = "Normal" })
@@ -34,9 +36,8 @@ function Theme:create_statusbar()
   vim.opt.statusline:append(" ")
 end
 
-function Theme:setup(colorscheme)
-  vim.cmd.colorscheme(colorscheme)
-  self:create_highlight_groups()
+function Theme:setup(opts)
+  self:create_highlight_groups(opts['hl'])
   self:create_statusbar()
 end
 

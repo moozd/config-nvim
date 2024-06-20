@@ -16,7 +16,12 @@ require("lazy").setup({
     { import = "config.plugins" },
     {
       "catppuccin/nvim",
-      lazy = false,
+      name = "catppuccin",
+      priority = 1000,
+      config = function()
+        vim.cmd.colorscheme("catppuccin-mocha")
+        require("config.theme"):new():setup({ hl = { transparent = false } })
+      end,
     },
   },
 
