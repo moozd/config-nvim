@@ -19,8 +19,8 @@ require("lazy").setup({
       name = "catppuccin",
       priority = 1000,
       config = function()
-        vim.cmd.colorscheme("catppuccin-mocha")
-        require("config.theme"):new():setup({ hl = { transparent = false } })
+        vim.cmd.colorscheme("catppuccin")
+        require("config.theme"):new():setup({ hl = { transparent = true } })
       end,
     },
   },
