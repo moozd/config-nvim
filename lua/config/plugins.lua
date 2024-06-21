@@ -248,6 +248,12 @@ return {
   },
 
   {
+    "stevearc/oil.nvim",
+    config = function()
+      require("oil").setup({})
+    end,
+  },
+  {
     "kawre/leetcode.nvim",
     lazy = false,
     build = ":TSUpdate html",
