@@ -254,6 +254,9 @@ return {
     end,
   },
   {
+    "DreamMaoMao/yazi.nvim",
+  },
+  {
     "kawre/leetcode.nvim",
     lazy = false,
     build = ":TSUpdate html",
