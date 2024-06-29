@@ -17,11 +17,14 @@ require("lazy").setup({
     {
       -- "catppuccin/nvim",
       -- name = "catppuccin",
-      "olivercederborg/poimandres.nvim",
+      "sainnhe/gruvbox-material",
       priority = 1000,
+      init=function ()
+        vim.g.gruvbox_material_background ='hard'
+      end,
       config = function()
-        vim.cmd.colorscheme("poimandres")
-        require("config.theme"):new():setup({ hl = { transparent = true } })
+        vim.cmd.colorscheme("gruvbox-material")
+        require("config.theme"):new():setup({ hl = { transparent = false } })
       end,
     },
   },
