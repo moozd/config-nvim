@@ -28,6 +28,7 @@ return {
       "simrat39/rust-tools.nvim",
       "folke/neoconf.nvim",
       "folke/neodev.nvim",
+      -- "davidmh/cspell.nvim",
     },
     config = function()
       require("neoconf").setup({})
@@ -53,7 +54,13 @@ return {
         end,
       })
 
-      require("null-ls").setup({})
+      -- local cspell = require("cspell")
+      require("null-ls").setup({
+        -- sources = {
+        --   cspell.diagnostics,
+        --   cspell.code_actions,
+        -- },
+      })
       require("mason-null-ls").setup({
         handlers = {
           function(source_name, methods)

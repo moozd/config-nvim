@@ -15,11 +15,12 @@ require("lazy").setup({
   spec = {
     { import = "config.plugins" },
     {
-      "catppuccin/nvim",
-      name = "catppuccin",
+      -- "catppuccin/nvim",
+      -- name = "catppuccin",
+      "olivercederborg/poimandres.nvim",
       priority = 1000,
       config = function()
-        vim.cmd.colorscheme("catppuccin")
+        vim.cmd.colorscheme("poimandres")
         require("config.theme"):new():setup({ hl = { transparent = true } })
       end,
     },

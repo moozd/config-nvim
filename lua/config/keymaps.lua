@@ -32,8 +32,11 @@ map("n", "<leader>gh", "<cmd>Gitsigns preview_hunk_inline<cr>")
 
 map("n", "<leader>q", "<cmd>Oil<cr>")
 map("n", "<leader>d", "<cmd>Trouble<cr>")
+
 map("n", "<leader>s", "<cmd>Telescope live_grep<cr>")
+map("n", "<leader>w", "<cmd>Telescope buffers<cr>")
 map("n", "<leader>e", "<cmd>Telescope find_files<cr>")
+map("n", "<leader>z", "<cmd>set spell!<cr>")
 map("n", "<leader>g", "<cmd>Neogit<cr>")
 map("n", "<leader>c", vim.lsp.buf.code_action)
 map("n", "<leader>f", vim.lsp.buf.format)

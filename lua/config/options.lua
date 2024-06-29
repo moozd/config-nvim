@@ -36,10 +36,9 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 
 -- spell check
--- vim.opt.spelllang = "en_us"
--- vim.opt.spell = false
+vim.opt.spelllang = "en_us"
+vim.opt.spell = false
 vim.g.loaded_node_provider = 0
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_python_provider = 0
 vim.g.loaded_ruby_provider = 0
--- vim.optdatetime = 10
