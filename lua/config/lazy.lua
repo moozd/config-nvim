@@ -20,12 +20,6 @@ require("lazy").setup({
     {
       "catppuccin/nvim",
       name = "catppuccin",
-      "sainnhe/gruvbox-material",
-    },
-    {
-      "folke/tokyonight.nvim",
-      priority = 1000,
-      opts = {},
     },
     {
       import = "config.plugins",

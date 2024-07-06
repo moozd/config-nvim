@@ -72,20 +72,20 @@ return {
       require("rust-tools").setup({})
     end,
   },
-  {
-    "L3MON4D3/LuaSnip",
-    build = true,
-    dependencies = {
-      "rafamadriz/friendly-snippets",
-      config = function()
-        require("luasnip.loaders.from_vscode").lazy_load()
-      end,
-    },
-    opts = {
-      history = true,
-      delete_check_events = "TextChanged",
-    },
-  },
+  -- {
+  --   "L3MON4D3/LuaSnip",
+  --   build = true,
+  --   dependencies = {
+  --     "rafamadriz/friendly-snippets",
+  --     config = function()
+  --       require("luasnip.loaders.from_vscode").lazy_load()
+  --     end,
+  --   },
+  --   opts = {
+  --     history = true,
+  --     delete_check_events = "TextChanged",
+  --   },
+  -- },
   {
     "hrsh7th/nvim-cmp",
     dependencies = {
@@ -114,7 +114,7 @@ return {
           }),
         }),
         sources = cmp.config.sources({
-          { name = "luasnip" },
+          -- { name = "luasnip" },
           { name = "nvim_lsp" },
           { name = "path" },
           { name = "buffer" },
@@ -122,11 +122,11 @@ return {
         }),
       })
 
-      local ls = require("luasnip")
-      ls.config.set_config({
-        history = false,
-        updateevents = "TextChanged,TextChangedI",
-      })
+      -- local ls = require("luasnip")
+      -- ls.config.set_config({
+      --   history = false,
+      --   updateevents = "TextChanged,TextChangedI",
+      -- })
     end,
   },
   {

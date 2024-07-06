@@ -1,6 +1,6 @@
 vim.g.netrw_banner = 0
 vim.g.mapleader = " "
-vim.opt.guicursor = ""
+-- vim.opt.guicursor = ""
 
 vim.opt.clipboard = "unnamedplus" -- Sync with system clipboard
 vim.opt.nu = true
