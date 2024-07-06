@@ -13,19 +13,22 @@ vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
 require("lazy").setup({
   spec = {
-    { import = "config.plugins" },
     {
-      -- "catppuccin/nvim",
-      -- name = "catppuccin",
-      "sainnhe/gruvbox-material",
+      "olivercederborg/poimandres.nvim",
       priority = 1000,
-      init=function ()
-        vim.g.gruvbox_material_background ='hard'
-      end,
-      config = function()
-        vim.cmd.colorscheme("gruvbox-material")
-        require("config.theme"):new():setup({ hl = { transparent = false } })
-      end,
+    },
+    {
+      "catppuccin/nvim",
+      name = "catppuccin",
+      "sainnhe/gruvbox-material",
+    },
+    {
+      "folke/tokyonight.nvim",
+      priority = 1000,
+      opts = {},
+    },
+    {
+      import = "config.plugins",
     },
   },
 
