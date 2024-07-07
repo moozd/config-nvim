@@ -18,6 +18,10 @@ require("lazy").setup({
       priority = 1000,
     },
     {
+      "folke/tokyonight.nvim",
+      priority = 1000,
+    },
+    {
       "catppuccin/nvim",
       name = "catppuccin",
     },
