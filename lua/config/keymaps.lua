@@ -30,7 +30,8 @@ map("n", "<leader>gc", "<cmd>BCommits<cr>")
 map("n", "<leader>gb", "<cmd>Git blame<cr>")
 map("n", "<leader>gh", "<cmd>Gitsigns preview_hunk_inline<cr>")
 
-map("n", "<leader>q", "<cmd>Oil<cr>")
+map("n", "<leader>q", MiniFiles.open)
+map("n", "<leader>Q", "<cmd>Oil<cr>")
 map("n", "<leader>d", "<cmd>Trouble<cr>")
 
 map("n", "<leader>s", "<cmd>Telescope live_grep<cr>")

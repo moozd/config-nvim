@@ -28,7 +28,7 @@ return {
       "simrat39/rust-tools.nvim",
       "folke/neoconf.nvim",
       "folke/neodev.nvim",
-      -- "davidmh/cspell.nvim",
+      "davidmh/cspell.nvim",
     },
     config = function()
       require("neoconf").setup({})
@@ -54,12 +54,29 @@ return {
         end,
       })
 
-      -- local cspell = require("cspell")
+      local cspell = require("cspell")
+      local cspell_config = {
+        config_file_preferred_name = "cspell.json",
+        find_json = function()
+          local p = vim.env.HOME .. "/.config/nvim/cspell.json"
+          return p
+        end,
+      }
       require("null-ls").setup({
-        -- sources = {
-        --   cspell.diagnostics,
-        --   cspell.code_actions,
-        -- },
+        sources = {
+          cspell.diagnostics.with({
+            diagnostics_postprocess = function(diagnostic)
+              diagnostic.severity = vim.diagnostic.severity["HINT"]
+            end,
+            diagnostic_config = {
+              virtual_text = false,
+            },
+            config = cspell_config,
+          }),
+          cspell.code_actions.with({
+            config = cspell_config,
+          }),
+        },
       })
       require("mason-null-ls").setup({
         handlers = {
@@ -72,20 +89,6 @@ return {
       require("rust-tools").setup({})
     end,
   },
-  -- {
-  --   "L3MON4D3/LuaSnip",
-  --   build = true,
-  --   dependencies = {
-  --     "rafamadriz/friendly-snippets",
-  --     config = function()
-  --       require("luasnip.loaders.from_vscode").lazy_load()
-  --     end,
-  --   },
-  --   opts = {
-  --     history = true,
-  --     delete_check_events = "TextChanged",
-  --   },
-  -- },
   {
     "hrsh7th/nvim-cmp",
     dependencies = {
@@ -100,11 +103,6 @@ return {
         completion = {
           completeopt = "menu,menuone,select",
         },
-        -- snippet = {
-        --   expand = function(args)
-        --     require("luasnip").lsp_expand(args.body)
-        --   end,
-        -- },
         mapping = cmp.mapping.preset.insert({
           ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
           ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
@@ -121,12 +119,6 @@ return {
           { name = "vim-dadbod-completion" },
         }),
       })
-
-      -- local ls = require("luasnip")
-      -- ls.config.set_config({
-      --   history = false,
-      --   updateevents = "TextChanged,TextChangedI",
-      -- })
     end,
   },
   {
@@ -152,7 +144,7 @@ return {
     },
   },
 
-  -- code editig tools
+  -- code editing tools
   {
     "folke/trouble.nvim",
     opts = {},
@@ -261,7 +253,18 @@ return {
     end,
   },
   {
-    "DreamMaoMao/yazi.nvim",
+    "echasnovski/mini.files",
+    version = false,
+    config = function()
+      require("mini.files").setup({
+
+        mappings = {
+          go_in = "<Right>",
+          go_in_plus = "<cr>",
+          go_out = "<Left>",
+        },
+      })
+    end,
   },
   {
     "kawre/leetcode.nvim",
@@ -271,7 +274,6 @@ return {
       "nvim-telescope/telescope.nvim",
       "nvim-lua/plenary.nvim", -- required by telescope
       "MunifTanjim/nui.nvim",
-
       -- optional
       "nvim-treesitter/nvim-treesitter",
     },
