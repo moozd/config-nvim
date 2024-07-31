@@ -9,11 +9,24 @@ return {
 
     config = function()
       require("nvim-treesitter.configs").setup({
+        ensure_installed = {
+          "go",
+          "lua",
+          "markdown",
+          "markdown_inline",
+          "vimdoc",
+        },
         highlight = {
           enable = true,
         },
         indent = { enable = true },
         incremental_selection = { enable = true },
+      })
+
+      vim.filetype.add({
+        extension = {
+          mdx = "mdx",
+        },
       })
     end,
   },
@@ -253,15 +266,54 @@ return {
     end,
   },
   {
-    "echasnovski/mini.files",
-    version = false,
+    "nvim-pack/nvim-spectre",
+    dependencies = { "nvim-lua/plenary.nvim" },
+  },
+  -- {
+  --   "echasnovski/mini.files",
+  --   version = false,
+  --   config = function()
+  --     require("mini.files").setup({
+  --
+  --       mappings = {
+  --         go_in = "<Right>",
+  --         go_in_plus = "<cr>",
+  --         go_out = "<Left>",
+  --       },
+  --     })
+  --   end,
+  -- },
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+      "MunifTanjim/nui.nvim",
+      -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+    },
     config = function()
-      require("mini.files").setup({
+      require("neo-tree").setup({
+        auto_clean_after_session_restore = true,
+        event_handlers = {
 
-        mappings = {
-          go_in = "<Right>",
-          go_in_plus = "<cr>",
-          go_out = "<Left>",
+          {
+            event = "file_open_requested",
+            handler = function()
+              require("neo-tree.command").execute({ action = "close" })
+            end,
+          },
+        },
+        filesystem = {
+
+          window = {
+            position = "right",
+            height = "30",
+          },
+          follow_current_file = {
+            enabled = true,
+            leave_dirs_open = true,
+          },
         },
       })
     end,

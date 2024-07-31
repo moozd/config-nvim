@@ -24,13 +24,14 @@ map({ "n", "i" }, "<M-Down>", "<cmd>m+1<cr>")
 
 map("n", "<leader>or", "<cmd>OverseerRun<cr>")
 map("n", "<leader>oa", "<cmd>OverseerTaskAction<cr>")
+map("n", "<leader>ob", "<cmd>OverseerLoadBundle<cr>")
 
 map("n", "<leader>gd", "<cmd>Gdiffsplit<cr>")
 map("n", "<leader>gc", "<cmd>BCommits<cr>")
 map("n", "<leader>gb", "<cmd>Git blame<cr>")
 map("n", "<leader>gh", "<cmd>Gitsigns preview_hunk_inline<cr>")
 
-map("n", "<leader>q", MiniFiles.open)
+map("n", "<leader>q", "<cmd>Neotree<cr>")
 map("n", "<leader>Q", "<cmd>Oil<cr>")
 map("n", "<leader>d", "<cmd>Trouble<cr>")
 
