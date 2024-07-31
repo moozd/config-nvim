@@ -5,7 +5,7 @@ vim.opt.guicursor = ""
 vim.opt.clipboard = "unnamedplus" -- Sync with system clipboard
 vim.opt.nu = true
 vim.opt.relativenumber = true
-
+vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 
@@ -30,9 +30,6 @@ vim.opt.isfname:append("@-@")
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 
--- spell check
--- vim.opt.spelllang = "en_us"
--- vim.opt.spell = false
 vim.g.loaded_node_provider = 0
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_python_provider = 0
