@@ -17,13 +17,13 @@ function Theme:create_highlight_groups(opts)
   h(0, "DiagnosticUnderlineError", { undercurl = true })
 
   -- interface
-  if opts["transparent"] then
-    h(0, "Normal", { bg = "None" })
-  end
-  h(0, "NormalNC", { link = "Normal" })
-  h(0, "LineNr", { link = "Normal" })
-  h(0, "SignColumn", { link = "Normal" })
-  h(0, "MatchParen", { bold = true, fg="#b4be00" })
+  -- if opts["transparent"] then
+  --   h(0, "Normal", { bg = "None" })
+  --   h(0, "NormalNC", { link = "Normal" })
+  -- end
+  -- h(0, "LineNr", { link = "Normal" })
+  -- h(0, "SignColumn", { link = "Normal" })
+  -- h(0, "MatchParen", { bold = true, fg="#b4be00" })
   -- h(0, "StatusLine", { bg = "#181825",fg="#b4befe", bold = false })
 end
 
