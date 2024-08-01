@@ -28,9 +28,14 @@ return {
           mdx = "mdx",
         },
       })
+
+      vim.filetype.add({
+        pattern = {
+          [".*/templates/.*%.yaml"] = "helm",
+        },
+      })
     end,
   },
-
   {
     "williamboman/mason.nvim",
     dependencies = {
