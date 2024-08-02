@@ -1,4 +1,16 @@
 return {
+  --ai
+  {
+    "codethenpizza/lazy-llama",
+    requires = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require("lazy-llama").setup({
+        url = "http://127.0.0.1:11434", -- default URL
+        model = "deepseek-llm", -- default model
+        stream = true, -- enable streaming by default
+      })
+    end,
+  },
   -- core
   {
     "nvim-treesitter/nvim-treesitter",
