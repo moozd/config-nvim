@@ -11,6 +11,10 @@ return {
       })
     end,
   },
+  {
+    "davidmh/mdx.nvim",
+    config = true,
+  },
   -- core
   {
     "nvim-treesitter/nvim-treesitter",
@@ -35,11 +39,11 @@ return {
         incremental_selection = { enable = true },
       })
 
-      vim.filetype.add({
-        extension = {
-          mdx = "mdx",
-        },
-      })
+      -- vim.filetype.add({
+      -- 	extension = {
+      -- 		mdx = "mdx",
+      -- 	},
+      -- })
 
       vim.filetype.add({
         pattern = {
