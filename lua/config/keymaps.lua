@@ -19,6 +19,13 @@ map("n", "gs", vim.lsp.buf.document_symbol)
 map("n", "gS", vim.lsp.buf.workspace_symbol)
 map("n", "gl", "<cmd>Telescope current_buffer_fuzzy_find previewer=false<cr>")
 
+map("n", "gito", "<cmd>Neogit kind=auto<cr>")
+map("n", "gith", "<cmd>DiffviewFileHistory %<cr>")
+map("n", "gitd", "<cmd>DiffviewOpen<cr>")
+
+map("n", "<leader>z", "<cmd>tabclose<cr>")
+map("n", "<leader>x", "<cmd>close<cr>")
+
 map({ "n", "i" }, "<M-UP>", "<cmd>m-2<cr>")
 map({ "n", "i" }, "<M-Down>", "<cmd>m+1<cr>")
 
@@ -39,8 +46,6 @@ map("n", "<leader>s", "<cmd>Telescope live_grep<cr>")
 map("n", "<leader>S", "<cmd>Spectre<cr>")
 map("n", "<leader>w", "<cmd>Telescope buffers<cr>")
 map("n", "<leader>e", "<cmd>Telescope find_files<cr>")
-map("n", "<leader>gg", "<cmd>Neogit kind=auto<cr>")
-map("n", "<leader>gd", "<cmd>DiffviewOpen<cr>")
 map("n", "<leader>c", vim.lsp.buf.code_action)
 map("n", "<leader>f", vim.lsp.buf.format)
 map("n", "<leader>r", vim.lsp.buf.rename)
