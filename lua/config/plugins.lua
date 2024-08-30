@@ -67,7 +67,11 @@ return {
     config = function()
       require("neoconf").setup({})
       require("mason").setup({})
-      require("mason-lspconfig").setup({})
+      require("mason-lspconfig").setup({
+        ensure_installed = {
+          "eslint@4.8.0",
+        },
+      })
       require("mason-lspconfig").setup_handlers({
         function(server_name)
           if server_name == "volar" then
@@ -251,9 +255,15 @@ return {
       telescope.setup({
         theme = "ivy",
         shorten_path = true,
+				pickers={
+					find_files={
+						hidden=true
+					}
+				},
         defaults = vim.tbl_extend("force", require("telescope.themes").get_ivy(), {
           file_ignore_patterns = {
             "node_modules",
+						".git"
           },
         }),
       })
