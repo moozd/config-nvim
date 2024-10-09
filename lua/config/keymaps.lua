@@ -19,10 +19,13 @@ map("n", "gs", vim.lsp.buf.document_symbol)
 map("n", "gS", vim.lsp.buf.workspace_symbol)
 map("n", "gl", "<cmd>Telescope current_buffer_fuzzy_find previewer=false<cr>")
 
-map("n", "gito", "<cmd>Neogit kind=auto<cr>")
+map("n", "gito", "<cmd>Neogit kind=tab<cr>")
 map("n", "gith", "<cmd>DiffviewFileHistory %<cr>")
 map("n", "gitd", "<cmd>DiffviewOpen<cr>")
 map("n", "gitb", "<cmd>G blame<cr>")
+
+map({ "n" }, "term", "<cmd>ToggleTerm direction=float name=Console<cr>")
+map({ "t" }, "<esc><esc>", "<cmd>ToggleTerm<cr>")
 
 map("n", "<leader>z", "<cmd>tabclose<cr>")
 map("n", "<leader>x", "<cmd>close<cr>")
@@ -39,7 +42,7 @@ map("n", "<leader>gc", "<cmd>BCommits<cr>")
 map("n", "<leader>gb", "<cmd>Git blame<cr>")
 map("n", "<leader>gh", "<cmd>Gitsigns preview_hunk_inline<cr>")
 
-map("n", "<leader>q", "<cmd>Neotree position=float<cr>")
+map("n", "<leader>q", "<cmd>Neotree toggle position=left<cr>")
 map("n", "<leader>Q", "<cmd>Oil<cr>")
 map("n", "<leader>d", "<cmd>Trouble<cr>")
 

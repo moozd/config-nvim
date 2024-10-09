@@ -128,12 +128,22 @@ return {
     end,
   },
   {
+    "topaxi/gh-actions.nvim",
+    lazy = false,
+    keys = {
+      { "<leader>gh", "<cmd>GhActions<cr>", desc = "Open Github Actions" },
+    },
+    -- optional, you can also install and use `yq` instead.
+    build = "make",
+    ---@type GhActionsConfig
+    opts = {},
+  },
+  {
     "hrsh7th/nvim-cmp",
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
-      -- "saadparwaiz1/cmp_luasnip",
     },
     config = function()
       local cmp = require("cmp")
@@ -150,7 +160,6 @@ return {
           }),
         }),
         sources = cmp.config.sources({
-          -- { name = "luasnip" },
           { name = "nvim_lsp" },
           { name = "path" },
           { name = "buffer" },
@@ -223,6 +232,7 @@ return {
       },
     },
   },
+  { "akinsho/toggleterm.nvim", version = "*", config = true },
   {
     "echasnovski/mini.ai",
     version = false,
@@ -255,15 +265,15 @@ return {
       telescope.setup({
         theme = "ivy",
         shorten_path = true,
-				pickers={
-					find_files={
-						hidden=true
-					}
-				},
+        pickers = {
+          find_files = {
+            hidden = true,
+          },
+        },
         defaults = vim.tbl_extend("force", require("telescope.themes").get_ivy(), {
           file_ignore_patterns = {
             "node_modules",
-						".git"
+            ".git",
           },
         }),
       })
@@ -300,20 +310,6 @@ return {
     "nvim-pack/nvim-spectre",
     dependencies = { "nvim-lua/plenary.nvim" },
   },
-  -- {
-  --   "echasnovski/mini.files",
-  --   version = false,
-  --   config = function()
-  --     require("mini.files").setup({
-  --
-  --       mappings = {
-  --         go_in = "<Right>",
-  --         go_in_plus = "<cr>",
-  --         go_out = "<Left>",
-  --       },
-  --     })
-  --   end,
-  -- },
   {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
@@ -325,7 +321,7 @@ return {
     },
     config = function()
       require("neo-tree").setup({
-        auto_clean_after_session_restore = true,
+        auto_clean_after_session_restore = false,
         event_handlers = {
 
           {
