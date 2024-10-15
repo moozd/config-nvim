@@ -50,13 +50,8 @@ map("n", "<leader>f", vim.lsp.buf.format)
 map("n", "<leader>r", vim.lsp.buf.rename)
 
 if vim.g.neovide then
-  map("n", "<leader><tab>", function()
+  map("n", "<c-a><c-a>", function()
     local Terminal = require("toggleterm.terminal").Terminal
     Terminal:new({ cmd = "source ~/.config/neovide/hub/hub.sh && neovide_hub_open", direction = "float" }):toggle()
-  end)
-
-  map("n", "<leader>`", function()
-    local Terminal = require("toggleterm.terminal").Terminal
-    Terminal:new({ cmd = "source ~/.config/neovide/hub/hub.sh && neovide_hub_switch", direction = "float" }):toggle()
   end)
 end

@@ -1,11 +1,11 @@
 if vim.g.neovide then
   vim.g.neovide_fullscreen = 1
-  vim.g.neovide_cursor_animation_length = 0
-  vim.opt.lsp = 2
-  vim.g.neovide_padding_top = 5
-  vim.g.neovide_padding_bottom = 5
-  vim.g.neovide_padding_right = 5
-  vim.g.neovide_padding_left = 5
+  vim.opt.lsp = 15
+  vim.g.neovide_underline_stroke_scale = 2
+  vim.g.neovide_padding_top = 10
+  vim.g.neovide_padding_bottom = 10
+  vim.g.neovide_padding_right = 10
+  vim.g.neovide_padding_left = 10
 end
 vim.g.netrw_banner = 0
 vim.g.mapleader = " "
