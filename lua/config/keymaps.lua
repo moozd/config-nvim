@@ -25,10 +25,10 @@ map("n", "gitd", "<cmd>DiffviewOpen<cr>")
 map("n", "gitb", "<cmd>G blame<cr>")
 
 map({ "n" }, "term", "<cmd>ToggleTerm direction=float name=Console<cr>")
-map({ "t" }, "<esc><esc>", "<cmd>ToggleTerm<cr>")
-
-map("n", "<leader>z", "<cmd>tabclose<cr>")
-map("n", "<leader>x", "<cmd>close<cr>")
+-- map({ "t" }, "<esc><esc>", "<cmd>ToggleTerm<cr>")
+-- map({ "n", "i", "t" }, "<c-]>", "<cmd>tabn<cr>")
+-- map({ "n", "i", "t" }, "<c-[>", "<cmd>tabp<cr>")
+map({ "n", "i", "t" }, "<c-x>", "<cmd>silent! close<cr>")
 
 map({ "n", "i" }, "<M-UP>", "<cmd>m-2<cr>")
 map({ "n", "i" }, "<M-Down>", "<cmd>m+1<cr>")
@@ -48,3 +48,15 @@ map("n", "<leader>e", "<cmd>Telescope find_files<cr>")
 map("n", "<leader>c", vim.lsp.buf.code_action)
 map("n", "<leader>f", vim.lsp.buf.format)
 map("n", "<leader>r", vim.lsp.buf.rename)
+
+if vim.g.neovide then
+  map("n", "<leader><tab>", function()
+    local Terminal = require("toggleterm.terminal").Terminal
+    Terminal:new({ cmd = "source ~/.config/neovide/hub/hub.sh && neovide_hub_open", direction = "float" }):toggle()
+  end)
+
+  map("n", "<leader>`", function()
+    local Terminal = require("toggleterm.terminal").Terminal
+    Terminal:new({ cmd = "source ~/.config/neovide/hub/hub.sh && neovide_hub_switch", direction = "float" }):toggle()
+  end)
+end

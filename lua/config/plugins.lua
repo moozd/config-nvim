@@ -15,6 +15,23 @@ return {
     "davidmh/mdx.nvim",
     config = true,
   },
+  {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    },
+  },
+  {
+    "dgagn/diagflow.nvim",
+    -- event = 'LspAttach', This is what I use personnally and it works great
+    opts = {
+      placement = "top",
+      scope = "line",
+    },
+  },
   -- core
   {
     "nvim-treesitter/nvim-treesitter",
