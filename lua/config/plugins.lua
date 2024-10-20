@@ -1,16 +1,16 @@
 return {
   --ai
-  {
-    "codethenpizza/lazy-llama",
-    requires = { "nvim-lua/plenary.nvim" },
-    config = function()
-      require("lazy-llama").setup({
-        url = "http://127.0.0.1:11434", -- default URL
-        model = "deepseek-llm", -- default model
-        stream = true, -- enable streaming by default
-      })
-    end,
-  },
+  -- {
+  --   "codethenpizza/lazy-llama",
+  --   requires = { "nvim-lua/plenary.nvim" },
+  --   config = function()
+  --     require("lazy-llama").setup({
+  --       url = "http://127.0.0.1:11434", -- default URL
+  --       model = "deepseek-llm", -- default model
+  --       stream = true, -- enable streaming by default
+  --     })
+  --   end,
+  -- },
   {
     "davidmh/mdx.nvim",
     config = true,
@@ -214,14 +214,14 @@ return {
     opts = {},
   },
   { "tpope/vim-fugitive" },
-  {
-    "NeogitOrg/neogit",
-    dependencies = {
-      "nvim-lua/plenary.nvim", -- required
-      "sindrets/diffview.nvim", -- optional - Diff integration
-    },
-    config = true,
-  },
+  -- {
+  --   "NeogitOrg/neogit",
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim", -- required
+  --     "sindrets/diffview.nvim", -- optional - Diff integration
+  --   },
+  --   config = true,
+  -- },
   {
     "windwp/nvim-ts-autotag",
     config = function()
@@ -306,7 +306,33 @@ return {
       require("overseer").setup()
     end,
   },
-
+  {
+    "ldelossa/gh.nvim",
+    dependencies = {
+      {
+        "ldelossa/litee.nvim",
+        config = function()
+          require("litee.lib").setup()
+        end,
+      },
+    },
+    config = function()
+      require("litee.gh").setup()
+    end,
+  },
+  -- {
+  --   "karb94/neoscroll.nvim",
+  --   config = function()
+  --     require("neoscroll").setup({})
+  --   end,
+  -- },
+  {
+    "declancm/cinnamon.nvim",
+    version = "*", -- use latest release
+    opts = {
+      -- change default options here
+    },
+  },
   {
     "rmagatti/auto-session",
     config = function()

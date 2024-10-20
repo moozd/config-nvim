@@ -19,9 +19,9 @@ map("n", "gs", vim.lsp.buf.document_symbol)
 map("n", "gS", vim.lsp.buf.workspace_symbol)
 map("n", "gl", "<cmd>Telescope current_buffer_fuzzy_find previewer=false<cr>")
 
-map("n", "gito", "<cmd>Neogit kind=tab<cr>")
-map("n", "gith", "<cmd>DiffviewFileHistory %<cr>")
-map("n", "gitd", "<cmd>DiffviewOpen<cr>")
+map("n", "gito", "<cmd>vertical G<cr>")
+map("n", "gith", "<cmd>Gllog %<cr>")
+map("n", "gitd", "<cmd>Gdiffsplit<cr>")
 map("n", "gitb", "<cmd>G blame<cr>")
 
 map({ "n" }, "term", "<cmd>ToggleTerm direction=float name=Console<cr>")
