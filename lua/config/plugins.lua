@@ -24,13 +24,31 @@ return {
       -- refer to the configuration section below
     },
   },
+  -- {
+  --   "dgagn/diagflow.nvim",
+  --   event = "LspAttach",
+  --   opts = {
+  --     placement = "top",
+  --     scope = "line",
+  --   },
+  -- },
   {
-    "dgagn/diagflow.nvim",
-    -- event = 'LspAttach', This is what I use personnally and it works great
-    opts = {
-      placement = "top",
-      scope = "line",
+    "CopilotC-Nvim/CopilotChat.nvim",
+    branch = "canary",
+    dependencies = {
+      { "github/copilot.vim" }, -- or github/copilot.vim
+      { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
     },
+    build = "make tiktoken", -- Only on MacOS or Linux
+    opts = {
+      debug = true, -- Enable debugging
+      -- See Configuration section for rest
+    },
+    -- See Commands section for default commands if you want to lazy load on them
+  },
+  {
+    "github/copilot.vim",
+    lazy = false,
   },
   -- core
   {
@@ -68,6 +86,15 @@ return {
         },
       })
     end,
+  },
+  {
+    "stevearc/conform.nvim",
+    opts = {
+      default_format_opts = {
+        lsp_format = "fallback",
+      },
+      formatters_by_ft = { rust = { "rustfmt", lsp_format = "fallback" } },
+    },
   },
   {
     "williamboman/mason.nvim",
