@@ -17,17 +17,13 @@ map("n", "gr", vim.lsp.buf.references)
 map("n", "gi", vim.lsp.buf.implementation)
 map("n", "gs", vim.lsp.buf.document_symbol)
 map("n", "gS", vim.lsp.buf.workspace_symbol)
--- map("n", "gl", "<cmd>Telescope current_buffer_fuzzy_find previewer=false<cr>")
-
 map("n", "git", "<cmd>vertical G<cr>")
 map("n", "<leader>gh", "<cmd>Gllog %<cr>")
 map("n", "<leader>gd", "<cmd>Gdiffsplit<cr>")
 map("n", "<leader>gb", "<cmd>G blame<cr>")
+map("i", "jj", "<esc>")
 
 map({ "n" }, "term", "<cmd>ToggleTerm direction=float name=Console<cr>")
--- map({ "t" }, "<esc><esc>", "<cmd>ToggleTerm<cr>")
--- map({ "n", "i", "t" }, "<c-]>", "<cmd>tabn<cr>")
--- map({ "n", "i", "t" }, "<c-[>", "<cmd>tabp<cr>")
 map({ "n", "i", "t" }, "<c-x>", "<cmd>silent! close<cr>")
 
 map({ "n", "i" }, "<M-UP>", "<cmd>m-2<cr>")
