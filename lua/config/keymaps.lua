@@ -33,6 +33,11 @@ map({ "n", "i", "t" }, "<c-x>", "<cmd>silent! close<cr>")
 map({ "n", "i" }, "<M-UP>", "<cmd>m-2<cr>")
 map({ "n", "i" }, "<M-Down>", "<cmd>m+1<cr>")
 
+map("n", "<Up>", ":resize -2<CR>")
+map("n", "<Down>", ":resize +2<CR>")
+map("n", "<Left>", ":vertical resize -2<CR>")
+map("n", "<Right>", ":vertical resize +2<CR>")
+
 map("n", "<leader>or", "<cmd>OverseerRun<cr>")
 map("n", "<leader>oa", "<cmd>OverseerTaskAction<cr>")
 map("n", "<leader>ob", "<cmd>OverseerLoadBundle<cr>")
