@@ -22,6 +22,7 @@ map("n", "<leader>gh", "<cmd>Gllog %<cr>")
 map("n", "<leader>gd", "<cmd>Gdiffsplit<cr>")
 map("n", "<leader>gb", "<cmd>G blame<cr>")
 map("i", "jj", "<esc>")
+map({ "i", "n", "v" }, "<c-[>", "<esc>")
 
 map({ "n" }, "term", "<cmd>ToggleTerm direction=float name=Console<cr>")
 map({ "n", "i", "t" }, "<c-x>", "<cmd>silent! close<cr>")
