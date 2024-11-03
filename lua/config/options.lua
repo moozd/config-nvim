@@ -1,6 +1,6 @@
 if vim.g.neovide then
   vim.g.neovide_fullscreen = 1
-  vim.opt.lsp = 15
+  vim.opt.lsp = 16
   vim.g.neovide_underline_stroke_scale = 2
   vim.g.neovide_padding_top = 10
   vim.g.neovide_padding_bottom = 10

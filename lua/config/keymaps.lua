@@ -1,5 +1,20 @@
 local map = vim.keymap.set
 
+local harpoon = require("harpoon")
+map("n", "[h", function()
+  harpoon:list():prev()
+end)
+
+map("n", "]h", function()
+  harpoon:list():next()
+end)
+map("n", "<c-l>", function()
+  harpoon.ui:toggle_quick_menu(harpoon:list())
+end)
+map("n", "<C-k>", function()
+  harpoon:list():add()
+end)
+
 map("n", "]j", "<c-i>")
 map("n", "[j", "<c-o>")
 map("n", "]t", "<cmd>tabn<cr>")
@@ -21,7 +36,9 @@ map("n", "git", "<cmd>vertical G<cr>")
 map("n", "<leader>gh", "<cmd>Gllog %<cr>")
 map("n", "<leader>gd", "<cmd>Gdiffsplit<cr>")
 map("n", "<leader>gb", "<cmd>G blame<cr>")
+-- exit normal mode
 map("i", "jj", "<esc>")
+map("i", "jk", "<esc>")
 map({ "i", "n", "v" }, "<c-[>", "<esc>")
 
 map({ "n" }, "term", "<cmd>ToggleTerm direction=float name=Console<cr>")
@@ -29,11 +46,13 @@ map({ "n", "i", "t" }, "<c-x>", "<cmd>silent! close<cr>")
 
 map({ "n", "i" }, "<M-UP>", "<cmd>m-2<cr>")
 map({ "n", "i" }, "<M-Down>", "<cmd>m+1<cr>")
+map({ "n", "i" }, "<M-k>", "<cmd>m-2<cr>")
+map({ "n", "i" }, "<M-j>", "<cmd>m+1<cr>")
 
-map("n", "<Up>", ":resize -2<CR>")
-map("n", "<Down>", ":resize +2<CR>")
-map("n", "<Left>", ":vertical resize -2<CR>")
-map("n", "<Right>", ":vertical resize +2<CR>")
+map("n", "<S-Up>", ":resize -2<CR>")
+map("n", "<S-Down>", ":resize +2<CR>")
+map("n", "<S-Left>", ":vertical resize -2<CR>")
+map("n", "<S-Right>", ":vertical resize +2<CR>")
 
 map("n", "<leader>or", "<cmd>OverseerRun<cr>")
 map("n", "<leader>oa", "<cmd>OverseerTaskAction<cr>")
@@ -51,10 +70,13 @@ map("n", "<leader>e", "<cmd>Telescope find_files<cr>")
 map("n", "<leader>c", vim.lsp.buf.code_action)
 map("n", "<leader>f", require("conform").format)
 map("n", "<leader>r", vim.lsp.buf.rename)
-
 if vim.g.neovide then
   map("n", "<c-a><c-a>", function()
-    local Terminal = require("toggleterm.terminal").Terminal
-    Terminal:new({ cmd = "source ~/.config/neovide/hub/hub.sh && neovide_hub_open", direction = "float" }):toggle()
+    require("telescope").extensions.project.project({ display_type = "flull" })
   end)
 end
+
+--   map("n", "<c-a><c-a>", function()
+--     local Terminal = require("toggleterm.terminal").Terminal
+--     Terminal:new({ cmd = "source ~/.config/neovide/hub/hub.sh && neovide_hub_open", direction = "float" }):toggle()
+--   end)
