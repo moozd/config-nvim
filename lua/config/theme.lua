@@ -17,6 +17,9 @@ function Theme:create_highlight_groups(opts)
   -- 	h(0, "DiagnosticUnderlineInfo", { undercurl = true })
   -- 	h(0, "DiagnosticUnderlineHint", { undercurl = true })
   -- end
+  --
+
+  h(0, "DiagnosticUnderlineHint", { undercurl = false, underline = false })
   vim.diagnostic.config({
     virtual_text = false,
     signs = {
@@ -41,13 +44,13 @@ function Theme:create_highlight_groups(opts)
 end
 
 function Theme:create_statusbar()
-  vim.opt.statusline:append(" ")
-  vim.opt.statusline:append("%f ")
-  vim.opt.statusline:append("%m ")
-  vim.opt.statusline:append("%r ")
-  vim.opt.statusline:append("%= ")
-  vim.opt.statusline:append("%-13.(%l,%c%V%) %P")
-  vim.opt.statusline:append(" ")
+  -- vim.opt.statusline:append(" ")
+  -- vim.opt.statusline:append("%f ")
+  -- vim.opt.statusline:append("%m ")
+  -- vim.opt.statusline:append("%r ")
+  -- vim.opt.statusline:append("%= ")
+  -- vim.opt.statusline:append("%-13.(%l,%c%V%) %P")
+  -- vim.opt.statusline:append(" ")
 end
 
 function Theme:setup(opts)

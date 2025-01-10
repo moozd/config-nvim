@@ -2,17 +2,17 @@ local map = vim.keymap.set
 
 local harpoon = require("harpoon")
 map("n", "[h", function()
-  harpoon:list():prev()
+	harpoon:list():prev()
 end)
 
 map("n", "]h", function()
-  harpoon:list():next()
+	harpoon:list():next()
 end)
 map("n", "<c-l>", function()
-  harpoon.ui:toggle_quick_menu(harpoon:list())
+	harpoon.ui:toggle_quick_menu(harpoon:list())
 end)
 map("n", "<C-k>", function()
-  harpoon:list():add()
+	harpoon:list():add()
 end)
 
 map("n", "]j", "<c-i>")
@@ -58,25 +58,37 @@ map("n", "<leader>or", "<cmd>OverseerRun<cr>")
 map("n", "<leader>oa", "<cmd>OverseerTaskAction<cr>")
 map("n", "<leader>ob", "<cmd>OverseerLoadBundle<cr>")
 
-map("n", "<leader>q", "<cmd>Neotree toggle position=left<cr>")
-map("n", "<leader>Q", "<cmd>Oil<cr>")
+-- map("n", "<leader>q", "<cmd>Oil<cr>")
 map("n", "<leader>d", "<cmd>Trouble diagnostics toggle focus=true follow=true<cr>")
 map("n", "<leader>l", "<cmd>Trouble symbols toggle focus=true follow=true<cr>")
 
 map("n", "<leader>s", "<cmd>Telescope live_grep<cr>")
-map("n", "<leader>S", "<cmd>Spectre<cr>")
-map("n", "<leader>p", "<cmd>Telescope<cr>")
 map("n", "<leader>e", "<cmd>Telescope find_files<cr>")
 map("n", "<leader>c", vim.lsp.buf.code_action)
 map("n", "<leader>f", require("conform").format)
 map("n", "<leader>r", vim.lsp.buf.rename)
-if vim.g.neovide then
-  map("n", "<c-a><c-a>", function()
-    require("telescope").extensions.project.project({ display_type = "flull" })
-  end)
-end
 
---   map("n", "<c-a><c-a>", function()
---     local Terminal = require("toggleterm.terminal").Terminal
---     Terminal:new({ cmd = "source ~/.config/neovide/hub/hub.sh && neovide_hub_open", direction = "float" }):toggle()
---   end)
+if vim.g.neovide then
+	map("n", "<c-a><c-a>", "<cmd>NeovimProjectDiscover<cr>")
+	map("n", "<c-a><c-;>", "<cmd>NeovimProjectHistory<cr>")
+
+	vim.g.neovide_scale_factor = 1.0
+	local change_scale_factor = function(delta)
+		vim.g.neovide_scale_factor = vim.g.neovide_scale_factor * delta
+	end
+	vim.keymap.set("n", "<C-=>", function()
+		change_scale_factor(1.05)
+	end)
+	vim.keymap.set("n", "<C-->", function()
+		change_scale_factor(1 / 1.05)
+	end)
+
+	local tmux = require("toggleterm.terminal").Terminal:new({ cmd = "tmux attach", direction = "float" })
+	map("n", "<leader>t", function()
+		-- local cwd = vim.loop.cwd()
+		-- local project_name = cwd:match("^.+/(.+)$")
+		-- tmux.cmd = "tmux attach"
+		print(tmux.cmd)
+		tmux:toggle()
+	end)
+end
