@@ -17,10 +17,12 @@ map("n", "gr", vim.lsp.buf.references)
 map("n", "gi", vim.lsp.buf.implementation)
 map("n", "gs", vim.lsp.buf.document_symbol)
 map("n", "gS", vim.lsp.buf.workspace_symbol)
+-- git
 map("n", "git", "<cmd>vertical G<cr>")
 map("n", "<leader>gh", "<cmd>Gllog %<cr>")
-map("n", "<leader>gd", "<cmd>Gdiffsplit<cr>")
+map("n", "<leader>gd", "<cmd>Gvdiffsplit<cr>")
 map("n", "<leader>gb", "<cmd>G blame<cr>")
+
 -- exit normal mode
 map("i", "jj", "<esc>")
 map("i", "jk", "<esc>")
