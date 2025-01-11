@@ -1,9 +1,5 @@
 return {
   {
-    "davidmh/mdx.nvim",
-    config = true,
-  },
-  {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = {
@@ -25,7 +21,20 @@ return {
     branch = "harpoon2",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
-      require("harpoon"):setup({})
+      local harpoon = require("harpoon")
+      harpoon:setup({})
+
+      harpoon:extend({
+        UI_CREATE = function(cx)
+          vim.keymap.set("n", "<C-v>", function()
+            harpoon.ui:select_menu_item({ vsplit = true })
+          end, { buffer = cx.bufnr })
+
+          vim.keymap.set("n", "<C-x>", function()
+            harpoon.ui:select_menu_item({ split = true })
+          end, { buffer = cx.bufnr })
+        end,
+      })
     end,
   },
   {
@@ -45,6 +54,15 @@ return {
         ensure_installed = {
           "go",
           "lua",
+          "typescript",
+          "javascript",
+          "json",
+          "yaml",
+          "html",
+          "css",
+          "scss",
+          "rust",
+          "toml",
           "markdown",
           "markdown_inline",
           "vimdoc",
@@ -186,7 +204,7 @@ return {
   {
     "kristijanhusak/vim-dadbod-ui",
     dependencies = {
-      { "tpope/vim-dadbod", lazy = true },
+      { "tpope/vim-dadbod",                     lazy = true },
       { "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true },
     },
   },
@@ -240,13 +258,6 @@ return {
     },
   },
   { "akinsho/toggleterm.nvim", version = "*", config = true },
-  -- {
-  -- 	"echasnovski/mini.ai",
-  -- 	version = false,
-  -- 	config = function()
-  -- 		require("mini.ai").setup()
-  -- 	end,
-  -- },
   {
     "smjonas/inc-rename.nvim",
     config = function()
@@ -266,21 +277,12 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",
       "antoinemadec/telescope-git-browse.nvim",
-      "nvim-telescope/telescope-project.nvim",
     },
     config = function()
       local telescope = require("telescope")
       telescope.setup({
         shorten_path = true,
-        extensions = {
-          project = {
-            base_dirs = {
-              { "~/.config/", max_depth = 2 },
-              { "~/work/", max_depth = 2 },
-              { "~/personal/", max_depth = 2 },
-            },
-          },
-        },
+        extensions = {},
         pickers = {
           find_files = {
             hidden = true,
@@ -295,7 +297,6 @@ return {
       })
 
       telescope.load_extension("git_browse")
-      telescope.load_extension("project")
     end,
   },
 
@@ -308,50 +309,12 @@ return {
   },
   {
     "stevearc/oil.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
-      require("oil").setup({})
+      require("oil").setup({
+        default_file_explorer = false,
+        columns = { "icon" },
+      })
     end,
-  },
-  {
-    "kawre/leetcode.nvim",
-    lazy = false,
-    build = ":TSUpdate html",
-    dependencies = {
-      "nvim-telescope/telescope.nvim",
-      "nvim-lua/plenary.nvim", -- required by telescope
-      "MunifTanjim/nui.nvim",
-      "nvim-treesitter/nvim-treesitter",
-    },
-    opts = {
-      lang = "python3", -- configuration goes here
-    },
-  },
-  {
-    "coffebar/neovim-project",
-    enabled = false,
-    opts = {
-      projects = { -- define project roots
-        "~/work/*",
-        "~/personal/*",
-        "~/.config/*",
-      },
-      picker = {
-        type = "telescope", -- or "fzf-lua"
-      },
-    },
-    init = function()
-      -- enable saving the state of plugins in the session
-      vim.opt.sessionoptions:append("globals") -- save global variables that start with an uppercase letter and contain at least one lowercase letter.
-    end,
-    dependencies = {
-      { "nvim-lua/plenary.nvim" },
-      -- optional picker
-      { "nvim-telescope/telescope.nvim", tag = "0.1.4" },
-      -- optional picker
-      { "ibhagwan/fzf-lua" },
-      { "Shatur/neovim-session-manager" },
-    },
-    lazy = false,
-    priority = 100,
   },
 }
