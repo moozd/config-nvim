@@ -169,6 +169,8 @@ return {
       })
 
       require("rust-tools").setup({})
+
+      require("null-ls").disable("cspell")
     end,
   },
   {
@@ -204,7 +206,7 @@ return {
   {
     "kristijanhusak/vim-dadbod-ui",
     dependencies = {
-      { "tpope/vim-dadbod",                     lazy = true },
+      { "tpope/vim-dadbod", lazy = true },
       { "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true },
     },
   },
@@ -299,7 +301,12 @@ return {
       telescope.load_extension("git_browse")
     end,
   },
+  {
 
+    "folke/trouble.nvim",
+    opts = {}, -- for default options, refer to the configuration section for custom setup.
+    cmd = "Trouble",
+  },
   {
     "stevearc/overseer.nvim",
     opts = {},
@@ -316,5 +323,15 @@ return {
         columns = { "icon" },
       })
     end,
+  },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    ---@module "ibl"
+    ---@type ibl.config
+    opts = {
+      indent = { char = "|" },
+      scope = { show_start = false, show_end = false },
+    },
   },
 }

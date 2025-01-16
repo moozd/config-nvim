@@ -1,61 +1,51 @@
-Theme = {}
+local M = {}
 
-function Theme:new(o)
-  o = o or {}
-  setmetatable(o, self)
-  self.__index = self
-  return o
+local update = function(group, opts)
+  local current_hl = vim.api.nvim_get_hl(0, { name = group })
+  vim.api.nvim_set_hl(0, group, vim.tbl_extend("force", current_hl, opts or {}))
 end
 
-function Theme:create_highlight_groups(opts)
-  local h = vim.api.nvim_set_hl
-  -- Diagnostic
-  -- if vim.g.neovide then
-  --   h(0, "DiagnosticUnderlineOk", { undercurl = true })
-  --   h(0, "DiagnosticUnderlineWarn", { undercurl = true })
-  --   h(0, "DiagnosticUnderlineError", { undercurl = true })
-  -- 	h(0, "DiagnosticUnderlineInfo", { undercurl = true })
-  -- 	h(0, "DiagnosticUnderlineHint", { undercurl = true })
-  -- end
-  --
-
-  h(0, "DiagnosticUnderlineHint", { undercurl = false, underline = false })
+local patch_diagnostic_icons = function()
   vim.diagnostic.config({
     virtual_text = false,
     signs = {
       severity_limit = "WARN",
       text = {
-        [vim.diagnostic.severity.ERROR] = "",
-        [vim.diagnostic.severity.WARN] = "",
-        [vim.diagnostic.severity.INFO] = "",
-        [vim.diagnostic.severity.HINT] = "",
+        [vim.diagnostic.severity.ERROR] = " ",
+        [vim.diagnostic.severity.WARN] = " ",
+        [vim.diagnostic.severity.INFO] = " ",
+        [vim.diagnostic.severity.HINT] = " ",
       },
     },
   })
-  -- interface
-  if opts["transparent"] then
-    h(0, "Normal", { bg = "None" })
-    h(0, "NormalNC", { link = "Normal" })
-    h(0, "LineNr", { link = "Normal" })
-    h(0, "SignColumn", { link = "Normal" })
-  end
-  -- h(0, "MatchParen", { bold = true, fg="#b4be00" })
-  -- h(0, "StatusLine", { bg = "#181825",fg="#b4befe", bold = false })
 end
 
-function Theme:create_statusbar()
-  -- vim.opt.statusline:append(" ")
-  -- vim.opt.statusline:append("%f ")
-  -- vim.opt.statusline:append("%m ")
-  -- vim.opt.statusline:append("%r ")
-  -- vim.opt.statusline:append("%= ")
-  -- vim.opt.statusline:append("%-13.(%l,%c%V%) %P")
-  -- vim.opt.statusline:append(" ")
+local load_colorscheme = function()
+  vim.cmd.colorscheme("tokyonight-night")
+
+  -- update("@variable.builtin", { bold = true })
+  -- update("@keyword.function", { bold = true })
+  -- update("@keyword", { bold = true })
+  -- update("Boolean", { bold = true })
+  -- update("Include", { bold = true })
+  -- update("Statement", { bold = true })
+  -- update("Float", { bg = "#ff00ff" })
+
+  -- vim.api.nvim_set_hl(0, "LineNr", { link = "Normal" })
+  -- vim.api.nvim_set_hl(0, "SignColumn", { link = "Normal" })
+
+  -- Custom highlights for diagnostic icons
+  -- update("DiagnosticSignError", { bg = "NONE" }) -- Error icon
+  -- update("DiagnosticSignWarn", { bg = "NONE" }) -- Warning icon
+  -- update("DiagnosticSignInfo", { bg = "NONE" }) -- Info icon
+  -- update("DiagnosticSignHint", { bg = "NONE" }) -- Hint icon
 end
 
-function Theme:setup(opts)
-  self:create_highlight_groups(opts["hl"])
-  self:create_statusbar()
+M.setup = function(opts)
+  vim.tbl_extend("force", {}, opts or {})
+
+  load_colorscheme()
+  patch_diagnostic_icons()
 end
 
-return Theme
+return M

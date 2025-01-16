@@ -13,11 +13,7 @@ vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
 require("lazy").setup({
   spec = {
-    {
-      "catppuccin/nvim",
-      name = "catppuccin",
-    },
-    { "rose-pine/neovim", name = "rose-pine" },
+    { "folke/tokyonight.nvim", lazy = false },
     {
       import = "config.plugins",
     },

@@ -16,11 +16,12 @@ vim.opt.shiftwidth = 0
 vim.opt.shiftround = true
 vim.opt.softtabstop = 4
 
+
 vim.opt.wildmenu = true
 vim.opt.wildoptions = "fuzzy,tagfile"
 vim.opt.smartindent = true
 vim.opt.wrap = false
-vim.opt.pumheight = 5
+vim.opt.pumheight = 10
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
@@ -39,3 +40,6 @@ vim.g.loaded_node_provider = 0
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_python_provider = 0
 vim.g.loaded_ruby_provider = 0
+vim.o.foldmethod = "expr"
+vim.o.foldexpr = "nvim_treesitter#foldexpr()"
+vim.o.foldlevel = 99

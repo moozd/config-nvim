@@ -45,32 +45,18 @@ map("n", "<leader>or", "<cmd>OverseerRun<cr>")
 map("n", "<leader>oa", "<cmd>OverseerTaskAction<cr>")
 map("n", "<leader>ob", "<cmd>OverseerLoadBundle<cr>")
 
-map("n", "<leader>D", function()
-  vim.diagnostic.setqflist()
-end)
+map("n", "<leader>d", "<cmd>Trouble diagnostics focus<cr>")
 
-map("n", "<leader>d", function()
-  vim.diagnostic.setqflist({ scope = "buffer" })
-end)
-map("n", "<leader>s", function()
-  require("telescope.builtin").live_grep({
-    previewer = false,
-    shorten_path = true,
-    layout_strategy = "horizontal",
-  })
-end)
-map("n", "<leader>e", function()
-  require("telescope.builtin").find_files({
-    previewer = false,
-    shorten_path = true,
-    layout_strategy = "horizontal",
-    cwd = require("lspconfig.util").root_pattern(".git")(vim.fn.expand("%:p")),
-  })
-end)
+map("n", "<leader>s", "<cmd>Telescope live_grep previewer=false<cr>")
+map("n", "<leader>e", "<cmd>Telescope find_files previewer=false<cr>")
 map("n", "<leader>q", "<cmd>Oil<cr>")
 map("n", "<leader>c", vim.lsp.buf.code_action)
 map("n", "<leader>f", require("conform").format)
 map("n", "<leader>r", vim.lsp.buf.rename)
+
+map("n", "<leader>S", function()
+  require("null-ls").toggle("cspell")
+end)
 
 local harpoon = require("harpoon")
 map("n", "[h", function()
