@@ -13,7 +13,13 @@ vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
 require("lazy").setup({
   spec = {
-    { "folke/tokyonight.nvim", lazy = false },
+    {
+      "rose-pine/neovim",
+      name = "rose-pine",
+      config = function()
+        vim.cmd("colorscheme rose-pine")
+      end,
+    },
     {
       import = "config.plugins",
     },

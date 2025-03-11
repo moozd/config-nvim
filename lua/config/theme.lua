@@ -21,8 +21,6 @@ local patch_diagnostic_icons = function()
 end
 
 local load_colorscheme = function()
-  vim.cmd.colorscheme("tokyonight-night")
-
   -- update("@variable.builtin", { bold = true })
   -- update("@keyword.function", { bold = true })
   -- update("@keyword", { bold = true })

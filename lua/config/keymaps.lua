@@ -48,7 +48,16 @@ map("n", "<leader>ob", "<cmd>OverseerLoadBundle<cr>")
 map("n", "<leader>d", "<cmd>Trouble diagnostics focus<cr>")
 
 map("n", "<leader>s", "<cmd>Telescope live_grep previewer=false<cr>")
-map("n", "<leader>e", "<cmd>Telescope find_files previewer=false<cr>")
+map("n", "<leader>e", function()
+  require("telescope.builtin").find_files({
+    previewer = false,
+    show_untracked = true,
+    hidden = true,
+    git_status = true,
+    git_icons = { changed = "M", staged = "S", untracked = "U" },
+    file_ignore_patterns = { ".git", "node_modules" },
+  })
+end)
 map("n", "<leader>q", "<cmd>Oil<cr>")
 map("n", "<leader>c", vim.lsp.buf.code_action)
 map("n", "<leader>f", require("conform").format)
